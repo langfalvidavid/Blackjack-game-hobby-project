@@ -89,7 +89,7 @@ function gameLogic(){
 
 restartGameBtn.addEventListener("click",function(){
     if(inGame===false){
-        messageDP.style.display="none"
+        messageDP.textContent="Draw a card to start the game! 😀"
         sumDP.textContent="Sum: 0"
         sumVal=0
         let deleteCards = document.getElementById("cards")
