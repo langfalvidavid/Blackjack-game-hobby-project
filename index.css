@@ -3,19 +3,12 @@ html{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 30px;
 }
-
-@keyframes cardAnimation {
-    
-    
-}
-
 body{
     background-image: url(images/istockphoto-1299608766-612x612.jpg);
     background-size: cover;
     margin:0;
     
 }
-
 h1{
     margin:0;
     color:gold;
@@ -27,19 +20,25 @@ h1{
     text-align: start;
     font-size:1.2rem;
     text-shadow: 2px 2px 5px black;
-    margin:5% auto;
+    margin:0 auto 40px auto;
     text-align: center;
 }
 .buttons{
     display:flex;
     max-width: 200px;
-    margin: 10px auto;
+    margin: 5px auto;
     padding-bottom:20px;
     flex-direction: column;
     
 }
-#new-card-btn, #restart-game-btn{
-    margin-bottom: 30px;
+.sumBal{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#new-card-btn, #restart-game-btn, #stop-btn{
+    margin-bottom: 10px;
     background-color:aqua;
     border:none;
     border-radius:10px;
@@ -49,11 +48,22 @@ h1{
     color:black;
     padding:12px 15px;
     text-shadow: 1px 1px 0px black;
+    cursor: pointer;
+    outline: 0;
+    transition: 0.3s linear;
 }
-#new-card-btn:hover, #restart-game-btn:hover{
+
+#new-card-btn:hover, #restart-game-btn:hover, #stop-btn:hover{
     background-color:black;
     color:aqua;
+    box-shadow:0px 0px 50px rgb(5, 81, 167);
+}
+#new-card-btn:active, #restart-game-btn:active, #stop-btn:active{
+    transform:scale(0.5);
 }
 #cards{
     height: 100px;
+}
+#img{
+    animation-name: slidein;
 }
