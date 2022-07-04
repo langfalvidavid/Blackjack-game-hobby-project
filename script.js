@@ -56,14 +56,12 @@ let count=0
     if(inGame===true){
     count++
     let value = cardValue()
-    console.log(value)
     const img = document.createElement("img");
     img.id="img"
     img.src ="cards/"+newCard
     img.style.maxWidth="3rem"
     img.style.margin="0 5px "
     document.getElementById("cards").appendChild(img)
-    console.log(sumVal)
     sumVal+=value
     sumDP.textContent=`Sum: ${sumVal}`
     gameLogic()
