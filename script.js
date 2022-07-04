@@ -13,7 +13,7 @@ const cards=["2_of_clubs-min.jpg","2_of_diamonds-min.jpg","2_of_hearts-min.jpg",
             "8_of_clubs-min.jpg","8_of_diamonds-min.jpg","8_of_hearts-min.jpg","8_of_spades-min.jpg",
             "9_of_clubs-min.jpg","9_of_diamonds-min.jpg","9_of_hearts-min.jpg","9_of_spades-min.jpg",
             "10_of_clubs-min.jpg","10_of_diamonds-min.jpg","10_of_hearts-min.jpg","10_of_spades-min.jpg",
-            "ace_of_clubs-min.jpg","ace_of_diamonds-min.jpg","ace_of_hearts-min.jpg","ace_of_spades2-min.jpg",
+            "ace_of_clubs-min.jpg","ace_of_diamonds-min.jpg","ace_of_hearts-min.jpg","ace_of_spades-min.jpg",
             "jack_of_clubs2-min.jpg","jack_of_diamonds2-min.jpg","jack_of_hearts2-min.jpg","jack_of_spades2-min.jpg",
             "king_of_clubs2-min.jpg","king_of_diamonds2-min.jpg","king_of_hearts2-min.jpg","king_of_spades2-min.jpg",
             "queen_of_clubs2-min.jpg","queen_of_diamonds2-min.jpg","queen_of_hearts2-min.jpg","queen_of_spades2-min.jpg"]  

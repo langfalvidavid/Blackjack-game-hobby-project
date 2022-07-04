@@ -3,6 +3,12 @@ html{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 30px;
 }
+
+@keyframes cardAnimation {
+    
+    
+}
+
 body{
     background-image: url(images/istockphoto-1299608766-612x612.jpg);
     background-size: cover;
