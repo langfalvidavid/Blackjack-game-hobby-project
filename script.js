@@ -4,19 +4,19 @@ const sumDP = document.getElementById("sum")
 const messageDP = document.getElementById("message")
 const newCardBtn = document.getElementById("new-card-btn")
 const restartGameBtn = document.getElementById("restart-game-btn")
-const cards=["2_of_clubs-min.png","2_of_diamonds-min.png","2_of_hearts-min.png","2_of_spades-min.png",
-            "3_of_clubs-min.png","3_of_diamonds-min.png","3_of_hearts-min.png","3_of_spades-min.png",
-            "4_of_clubs-min.png","4_of_diamonds-min.png","4_of_hearts-min.png","4_of_spades-min.png",
-            "5_of_clubs-min.png","5_of_diamonds-min.png","5_of_hearts-min.png","5_of_spades-min.png",
-            "6_of_clubs-min.png","6_of_diamonds-min.png","6_of_hearts-min.png","6_of_spades-min.png",
-            "7_of_clubs-min.png","7_of_diamonds-min.png","7_of_hearts-min.png","7_of_spades-min.png",
-            "8_of_clubs-min.png","8_of_diamonds-min.png","8_of_hearts-min.png","8_of_spades-min.png",
-            "9_of_clubs-min.png","9_of_diamonds-min.png","9_of_hearts-min.png","9_of_spades-min.png",
-            "10_of_clubs-min.png","10_of_diamonds-min.png","10_of_hearts-min.png","10_of_spades-min.png",
-            "ace_of_clubs-min.png","ace_of_diamonds-min.png","ace_of_hearts-min.png","ace_of_spades2-min.png",
-            "jack_of_clubs2-min.png","jack_of_diamonds2-min.png","jack_of_hearts2-min.png","jack_of_spades2-min.png",
-            "king_of_clubs2-min.png","king_of_diamonds2-min.png","king_of_hearts2-min.png","king_of_spades2-min.png",
-            "queen_of_clubs2-min.png","queen_of_diamonds2-min.png","queen_of_hearts2-min.png","queen_of_spades2-min.png"]  
+const cards=["2_of_clubs-min.jpg","2_of_diamonds-min.jpg","2_of_hearts-min.jpg","2_of_spades-min.jpg",
+            "3_of_clubs-min.jpg","3_of_diamonds-min.jpg","3_of_hearts-min.jpg","3_of_spades-min.jpg",
+            "4_of_clubs-min.jpg","4_of_diamonds-min.jpg","4_of_hearts-min.jpg","4_of_spades-min.jpg",
+            "5_of_clubs-min.jpg","5_of_diamonds-min.jpg","5_of_hearts-min.jpg","5_of_spades-min.jpg",
+            "6_of_clubs-min.jpg","6_of_diamonds-min.jpg","6_of_hearts-min.jpg","6_of_spades-min.jpg",
+            "7_of_clubs-min.jpg","7_of_diamonds-min.jpg","7_of_hearts-min.jpg","7_of_spades-min.jpg",
+            "8_of_clubs-min.jpg","8_of_diamonds-min.jpg","8_of_hearts-min.jpg","8_of_spades-min.jpg",
+            "9_of_clubs-min.jpg","9_of_diamonds-min.jpg","9_of_hearts-min.jpg","9_of_spades-min.jpg",
+            "10_of_clubs-min.jpg","10_of_diamonds-min.jpg","10_of_hearts-min.jpg","10_of_spades-min.jpg",
+            "ace_of_clubs-min.jpg","ace_of_diamonds-min.jpg","ace_of_hearts-min.jpg","ace_of_spades2-min.jpg",
+            "jack_of_clubs2-min.jpg","jack_of_diamonds2-min.jpg","jack_of_hearts2-min.jpg","jack_of_spades2-min.jpg",
+            "king_of_clubs2-min.jpg","king_of_diamonds2-min.jpg","king_of_hearts2-min.jpg","king_of_spades2-min.jpg",
+            "queen_of_clubs2-min.jpg","queen_of_diamonds2-min.jpg","queen_of_hearts2-min.jpg","queen_of_spades2-min.jpg"]  
 
 function randomCard(){
     return cards[Math.floor(Math.random()*cards.length)]
