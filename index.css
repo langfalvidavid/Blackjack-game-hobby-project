@@ -1,0 +1,50 @@
+html{
+    text-align:center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 30px;
+}
+body{
+    background-image: url(images/istockphoto-1299608766-612x612.jpg);
+    background-size: cover;
+    margin:0;
+    
+}
+h1{
+    color:gold;
+    font-size:2rem;
+    text-shadow: 2px 2px 5px black;
+}
+.display{
+    color:white;
+    text-align: start;
+    font-size:1.2rem;
+    text-shadow: 2px 2px 5px black;
+    margin:60px 0 100px 60px;
+}
+.buttons{
+    display:flex;
+    max-width: 200px;
+    margin: 10px auto;
+    flex-direction: column;
+    margin-top:30px;
+    
+}
+#new-card-btn, #restart-game-btn{
+    margin-bottom: 30px;
+    background-color:aqua;
+    border:none;
+    border-radius:10px;
+    font-family: inherit;
+    font-size: .75rem;
+    font-weight: bold;
+    color:black;
+    padding:12px 15px;
+    text-shadow: 1px 1px 0px black;
+}
+#new-card-btn:hover, #restart-game-btn:hover{
+    background-color:black;
+    color:aqua;
+}
+#cards{
+    height: 100px;
+}
