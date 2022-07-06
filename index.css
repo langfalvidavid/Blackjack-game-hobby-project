@@ -55,7 +55,7 @@ h1{
     font-weight: bold;
     color:black;
     padding:12px 15px;
-    text-shadow: 1px 1px 0px black;
+    text-shadow: 1px 1px 0px rgb(10, 10, 10);
     cursor: pointer;
     outline: 0;
     transition: 0.3s linear;
