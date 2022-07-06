@@ -2,9 +2,12 @@
 const cardsDP = document.getElementById("cards") //div that cards are generated into
 const sumDP = document.getElementById("sum") //Sum of cards
 const messageDP = document.getElementById("message") //Message that is visible
+const balance = document.getElementById("balance") //Player's balance
+
 const newCardBtn = document.getElementById("new-card-btn") //Button that randomly generates a new card
 const restartGameBtn = document.getElementById("restart-game-btn") //Button that restarts game
-const balance = document.getElementById("balance") //Player's balance
+const stopBtn = document.getElementById("stop-btn") //Button that stops player action / starts dealer action
+
 const cards=["2_of_clubs-min.jpg","2_of_diamonds-min.jpg","2_of_hearts-min.jpg","2_of_spades-min.jpg",
             "3_of_clubs-min.jpg","3_of_diamonds-min.jpg","3_of_hearts-min.jpg","3_of_spades-min.jpg",
             "4_of_clubs-min.jpg","4_of_diamonds-min.jpg","4_of_hearts-min.jpg","4_of_spades-min.jpg",
@@ -49,7 +52,7 @@ function cardValue(){
         }
 }
 
-
+// ---- New card button ----
 
 let sumVal=0 //sum of cards
  newCardBtn.addEventListener("click",function() {
@@ -71,6 +74,8 @@ let sumVal=0 //sum of cards
 }
 })
 
+// ---- Game logic ----
+
 let inGame = true //if false, game is over
 let message = 
 ["Do you want to draw a new card? 😉",
@@ -86,12 +91,14 @@ function gameLogic(){
     }
 }
 
+// ---- Restart game button ----
+
 //resetting game to its default stage
 restartGameBtn.addEventListener("click",function(){
         messageDP.textContent="Draw a card to start the game! 😀"
         sumDP.textContent="Sum: 0"
         sumVal=0
-        let deleteCards = document.getElementById("cards")
+        const deleteCards = document.getElementById("cards")
         //counting how many elements does the cards div have, then deleting them
         let childrenX = deleteCards.childElementCount
         for(let i=0;i<childrenX;i++){
@@ -101,10 +108,23 @@ restartGameBtn.addEventListener("click",function(){
     }
 })
 
+// ---- Stop button ----
+
+let stopPressed=false //Basically the switch between gamestates
+stopBtn.addEventListener("click",function(){
+    if(sumVal<=21 && stopPressed===false){
+        const finalBal = sumVal
+        stopPressed=true
+    }
+    
+})
+
 // ---- Dealer system ----
 
 function dealer(){
+if(stopPressed){
 
+}
 }
 
 
