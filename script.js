@@ -3,10 +3,16 @@ const cardsDP = document.getElementById("cards") //div that cards are generated 
 const sumDP = document.getElementById("sum") //Sum of cards
 const messageDP = document.getElementById("message") //Message that is visible
 const balance = document.getElementById("balance") //Player's balance
+const bet = document.getElementById("bet") //Bet amount
 
 const newCardBtn = document.getElementById("new-card-btn") //Button that randomly generates a new card
 const restartGameBtn = document.getElementById("restart-game-btn") //Button that restarts game
 const stopBtn = document.getElementById("stop-btn") //Button that stops player action / starts dealer action
+
+const bet10 = document.getElementById("bet-10")
+const bet50 = document.getElementById("bet-50")
+const bet100 = document.getElementById("bet-100")
+const bet200 = document.getElementById("bet-200")
 
 const cards=["2_of_clubs-min.jpg","2_of_diamonds-min.jpg","2_of_hearts-min.jpg","2_of_spades-min.jpg",
             "3_of_clubs-min.jpg","3_of_diamonds-min.jpg","3_of_hearts-min.jpg","3_of_spades-min.jpg",
@@ -56,7 +62,7 @@ function cardValue(){
 
 let sumVal=0 //sum of cards
  newCardBtn.addEventListener("click",function() {
-    if(inGame===true){
+    if(inGame===true && stopPressed===false){
     let value = cardValue() //value of generated card
     //generating new elements for each card
     const img = document.createElement("img") 
@@ -65,7 +71,6 @@ let sumVal=0 //sum of cards
     img.style.maxWidth="3rem"
     img.style.margin="0 5px "
     img.style.borderRadius="10px"
-    img.style.animation.slice(0,1)
     document.getElementById("cards").appendChild(img) //pushing newly generated card into its place
     sumVal+=value
     sumDP.textContent=`Sum: ${sumVal}`//displaying current sum
@@ -80,7 +85,12 @@ let inGame = true //if false, game is over
 let message = 
 ["Do you want to draw a new card? 😉",
 "Congrats! You've got blackjack! 🥳",
-"Sorry, you're out of the game! 😭"]
+"Sorry, you're out of the game! 😭",
+"Let's see the dealer's cards! 🤞",
+"It's a draw! The dealer has won. 😤"
+// "The dealer has won! You've lost" + balInput + "! ☹️",
+// "Congrats! You've won " + balInput*2 + "!"
+]
 let win = false
 function gameLogic(){
         if(sumVal<=21){messageDP.textContent=message[0]}
@@ -98,14 +108,16 @@ restartGameBtn.addEventListener("click",function(){
         messageDP.textContent="Draw a card to start the game! 😀"
         sumDP.textContent="Sum: 0"
         sumVal=0
+        dealerSum=0
         const deleteCards = document.getElementById("cards")
         //counting how many elements does the cards div have, then deleting them
-        let childrenX = deleteCards.childElementCount
-        for(let i=0;i<childrenX;i++){
+        let playerChildren = deleteCards.childElementCount
+        for(let i=0;i<playerChildren;i++){
             let del = document.getElementById("img")
-            del.remove()
-        inGame=true
+            del.remove()    
     }
+        inGame=true
+        stopPressed=false
 })
 
 // ---- Stop button ----
@@ -114,21 +126,63 @@ let stopPressed=false //Basically the switch between gamestates
 stopBtn.addEventListener("click",function(){
     if(sumVal<=21 && stopPressed===false){
         const finalBal = sumVal
+        messageDP.textContent=message[3]
         stopPressed=true
+        dealer()
     }
     
 })
 
 // ---- Dealer system ----
-
+let dealerSum=0
 function dealer(){
 if(stopPressed){
+    do{
+        let value = cardValue() //value of generated card
+        //generating new elements for each card
+        const img = document.createElement("img") 
+        img.id="img"
+        img.src ="cards/"+newCard //file path
+        img.style.maxWidth="3rem"
+        img.style.margin="0 5px "
+        img.style.borderRadius="10px"
+        document.getElementById("cards").appendChild(img) //pushing newly generated card into its place
+        dealerSum+=value
+        sumDP.textContent=`Sum: ${sumVal}   |   ${dealerSum}`//displaying current sum
+        gameLogic() // decides whether player has lost or still in game
+        newCard=randomCard() // pulling new card from deck
+    }
+    while(dealerSum < sumVal && dealerSum<19)   
+}
+}
 
-}
-}
+// ---- Bet increase buttons ----
+let totalBet=0
+bet10.addEventListener("click",function(){
+    totalBet+=10
+    bet.textContent="Bet: "+totalBet
+})
+
+bet50.addEventListener("click",function(){
+    totalBet+=50
+    bet.textContent="Bet: "+totalBet
+})
+
+bet100.addEventListener("click",function(){
+    totalBet+=100
+    bet.textContent="Bet: "+totalBet
+})
+
+bet200.addEventListener("click",function(){
+    totalBet+=200
+    bet.textContent="Bet: "+totalBet
+})
 
 
 //---- Balance system ----
+
+let balInput=0
+let totalBalance = 1000
 function balanceSystem(){
 
 }

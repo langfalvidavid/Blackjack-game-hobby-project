@@ -26,7 +26,7 @@ h1{
 .buttons{
     display:flex;
     max-width: 200px;
-    margin: 5px auto;
+    margin: 5% auto 0 auto;
     padding-bottom:20px;
     flex-direction: column;
     
@@ -37,7 +37,8 @@ h1{
     justify-content: center;
     align-items: center;
 }
-#new-card-btn, #restart-game-btn, #stop-btn{
+#new-card-btn, #restart-game-btn, #stop-btn,
+#bet-10, #bet-50, #bet-100, #bet-200{
     margin-bottom: 10px;
     background-color:aqua;
     border:none;
@@ -53,12 +54,14 @@ h1{
     transition: 0.3s linear;
 }
 
-#new-card-btn:hover, #restart-game-btn:hover, #stop-btn:hover{
+#new-card-btn:hover, #restart-game-btn:hover, #stop-btn:hover,
+#bet-10:hover, #bet-50:hover, #bet-100:hover, #bet-200:hover{
     background-color:black;
     color:aqua;
     box-shadow:0px 0px 50px rgb(5, 81, 167);
 }
-#new-card-btn:active, #restart-game-btn:active, #stop-btn:active{
+#new-card-btn:active, #restart-game-btn:active, #stop-btn:active,
+#bet-10:active, #bet-50:active, #bet-100:active, #bet-200:active{
     transform:scale(0.5);
 }
 #cards{
@@ -66,4 +69,7 @@ h1{
 }
 #img{
     animation-name: slidein;
+}
+#sum{
+    margin-right:10%;
 }
