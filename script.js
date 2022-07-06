@@ -88,7 +88,11 @@ let message =
 "Congrats! You've got blackjack! 🥳",
 "Sorry, you're out of the game! 😭",
 "Let's see the dealer's cards! 🤞",
-"It's a draw! The dealer has won. 😤"
+"It's a draw! The dealer has won. 😤",
+"Dealer is out! You win! 🥳",
+"Sorry, you lost! 😥",
+"Congrats! You won! 😃"
+
 // "The dealer has won! You've lost" + balInput + "! ☹️",
 // "Congrats! You've won " + balInput*2 + "!"
 ]
@@ -117,6 +121,7 @@ restartGameBtn.addEventListener("click",function(){
             let del = document.getElementById("img")
             del.remove()
     }
+    bet.textContent="Bet: 0"
         inGame=true
         stopPressed=false
 })
@@ -163,7 +168,11 @@ if(stopPressed){
         gameLogic() // decides whether player has lost or still in game
         newCard=randomCard() // pulling new card from deck
     }
-    while(dealerSum < sumVal && dealerSum<19)   
+    while(dealerSum < sumVal && dealerSum<20)
+    if(dealerSum>21){messageDP.textContent=message[5]}
+    else if(dealerSum>sumVal){messageDP.textContent=message[6]}
+    else if(sumVal>dealerSum){message.textContent=message[7]}
+    
 }
 }
 

@@ -15,14 +15,12 @@ body{
 }
 
 h1{
-    
     margin:0;
     color:gold;
     font-size:2rem;
     text-shadow: 2px 2px 5px black;
 }
 .display{
-    
     color:white;
     text-align: start;
     font-size:1.2rem;
