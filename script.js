@@ -4,6 +4,7 @@ const sumDP = document.getElementById("sum") //Sum of cards
 const messageDP = document.getElementById("message") //Message that is visible
 const balance = document.getElementById("balance") //Player's balance
 const bet = document.getElementById("bet") //Bet amount
+const errorMsg = document.getElementById("error-msg") //Error message
 
 const newCardBtn = document.getElementById("new-card-btn") //Button that randomly generates a new card
 const restartGameBtn = document.getElementById("restart-game-btn") //Button that restarts game
@@ -159,29 +160,41 @@ if(stopPressed){
 // ---- Bet increase buttons ----
 let totalBet=0
 bet10.addEventListener("click",function(){
-    totalBet+=10
-    bet.textContent="Bet: "+totalBet
+    if(totalBet+10<=totalBalance){
+        totalBet+=10
+        bet.textContent="Bet: "+totalBet
+    }
+    else{errorMsg.style.display="block"}
+    
 })
 
 bet50.addEventListener("click",function(){
-    totalBet+=50
-    bet.textContent="Bet: "+totalBet
+    if(totalBet+50<=totalBalance){
+        totalBet+=50
+        bet.textContent="Bet: "+totalBet
+    }
+    else{errorMsg.style.display="block"}
 })
 
 bet100.addEventListener("click",function(){
-    totalBet+=100
-    bet.textContent="Bet: "+totalBet
+    if(totalBet+100<=totalBalance){
+        totalBet+=100
+        bet.textContent="Bet: "+totalBet
+    }
+    else{errorMsg.style.display="block"}
 })
 
 bet200.addEventListener("click",function(){
-    totalBet+=200
-    bet.textContent="Bet: "+totalBet
+    if(totalBet+200<=totalBalance){
+        totalBet+=200
+        bet.textContent="Bet: "+totalBet
+    }
+    else{errorMsg.style.display="block"}
 })
 
 
 //---- Balance system ----
 
-let balInput=0
 let totalBalance = 1000
 function balanceSystem(){
 

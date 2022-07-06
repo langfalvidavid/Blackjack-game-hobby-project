@@ -67,9 +67,11 @@ h1{
 #cards{
     height: 100px;
 }
-#img{
-    animation-name: slidein;
-}
 #sum{
     margin-right:10%;
+}
+#error-msg{
+    display:none;
+    color:red;
+    font-weight: bold;
 }
