@@ -115,7 +115,7 @@ restartGameBtn.addEventListener("click",function(){
         let playerChildren = deleteCards.childElementCount
         for(let i=0;i<playerChildren;i++){
             let del = document.getElementById("img")
-            del.remove()    
+            del.remove()
     }
         inGame=true
         stopPressed=false
@@ -130,7 +130,7 @@ stopBtn.addEventListener("click",function(){
         messageDP.textContent=message[3]
         stopPressed=true
         const separate = document.createElement("div")
-        separate.id = "separate"
+        separate.id = "img"
         separate.style.margin="0 30px"
         separate.style.display="inline-block"
         separate.style.height="130px"
