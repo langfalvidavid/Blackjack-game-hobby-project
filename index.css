@@ -9,13 +9,20 @@ body{
     margin:0;
     
 }
+.container{
+    
+    width:100%;
+}
+
 h1{
+    
     margin:0;
     color:gold;
     font-size:2rem;
     text-shadow: 2px 2px 5px black;
 }
 .display{
+    
     color:white;
     text-align: start;
     font-size:1.2rem;
@@ -24,6 +31,7 @@ h1{
     text-align: center;
 }
 .buttons{
+    
     display:flex;
     max-width: 200px;
     margin: 5% auto 0 auto;
@@ -32,6 +40,7 @@ h1{
     
 }
 .sumBal{
+    
     margin: 0;
     display: flex;
     justify-content: center;

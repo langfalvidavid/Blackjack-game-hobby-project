@@ -125,16 +125,26 @@ restartGameBtn.addEventListener("click",function(){
 
 let stopPressed=false //Basically the switch between gamestates
 stopBtn.addEventListener("click",function(){
-    if(sumVal<=21 && stopPressed===false){
+    if(sumVal<=21 && stopPressed===false && sumVal!=0){
         const finalBal = sumVal
         messageDP.textContent=message[3]
         stopPressed=true
+        const separate = document.createElement("div")
+        separate.id = "separate"
+        separate.style.margin="0 30px"
+        separate.style.display="inline-block"
+        separate.style.height="130px"
+        separate.style.width="5px"
+        separate.style.color="#fff"
+        separate.style.backgroundColor="#fff"
+        document.getElementById("cards").appendChild(separate)
         dealer()
     }
     
 })
 
 // ---- Dealer system ----
+
 let dealerSum=0
 function dealer(){
 if(stopPressed){
@@ -158,6 +168,7 @@ if(stopPressed){
 }
 
 // ---- Bet increase buttons ----
+
 let totalBet=0
 bet10.addEventListener("click",function(){
     if(totalBet+10<=totalBalance){
