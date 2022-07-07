@@ -63,6 +63,7 @@ function cardValue(){
 
 let sumVal=0 //sum of cards
  newCardBtn.addEventListener("click",function() {
+    if(totalBet!=0){
     if(inGame===true && stopPressed===false){
     let value = cardValue() //value of generated card
     //generating new elements for each card
@@ -77,10 +78,18 @@ let sumVal=0 //sum of cards
     sumDP.textContent=`Sum: ${sumVal}`//displaying current sum
     gameLogic() // decides whether player has lost or still in game
     newCard=randomCard() // pulling new card from deck
+}}
+else{
+    messageDP.textContent="Place your bets first!"
+    messageDP.style.color="red"
+    setTimeout(() => { 
+        messageDP.textContent=message[0]
+        messageDP.style.color="#fff" 
+        }, 2000)
 }
 })
 
-// ---- Game logic ----
+
 
 let inGame = true //if false, game is over
 let message = 
@@ -97,6 +106,9 @@ let message =
 // "The dealer has won! You've lost" + balInput + "! ☹️",
 // "Congrats! You've won " + balInput*2 + "!"
 ]
+
+// ---- Game logic ----
+
 let win = false
 function gameLogic(){
         if(sumVal<=21){messageDP.textContent=message[0]}
@@ -104,12 +116,14 @@ function gameLogic(){
         else{
         messageDP.textContent=message[2]
         inGame=false
+        playerWon=false
+        balanceSystem()
     }
 }
 
 // ---- Restart game button ----
 
-//resetting game to its default stage
+//resetting the game to its default stage
 restartGameBtn.addEventListener("click",function(){
         messageDP.textContent="Draw a card to start the game! 😀"
         sumDP.textContent="Sum: 0"
@@ -123,16 +137,15 @@ restartGameBtn.addEventListener("click",function(){
             del.remove()
     }
     bet.textContent="Bet: 0"
+    totalBet=0
         inGame=true
         stopPressed=false
 })
 
 // ---- Stop button ----
-
 let stopPressed=false //Basically the switch between gamestates
 stopBtn.addEventListener("click",function(){
     if(sumVal<=21 && stopPressed===false && sumVal!=0){
-        const finalBal = sumVal
         messageDP.textContent=message[3]
         stopPressed=true
         const separate = document.createElement("div")
@@ -166,7 +179,6 @@ if(stopPressed){
     do{
         let value = cardValue() //value of generated card
         //generating new elements for each card
-        sleep(2000)
         const img = document.createElement("img") 
         img.id="img"
         img.src ="cards/"+newCard //file path
@@ -197,14 +209,11 @@ if(stopPressed){
         messageDP.textContent=message[4]
         playerWon=false
     }
-    
+    balanceSystem()
 }
 }
 
 // ---- Bet increase buttons ----
-function removeAlert(){
-    errorMsg.style.display="none"
-}
 
 let totalBet=0
 bet10.addEventListener("click",function(){
@@ -268,6 +277,12 @@ bet200.addEventListener("click",function(){
 
 let totalBalance = 1000
 function balanceSystem(){
-if(playerWon){totalBalance+=totalBet}
-else{totalBalance-=totalBet}
+if(playerWon===true){
+    totalBalance+=totalBet
+    balance.textContent="Balance: " + totalBalance
+}
+else{
+    totalBalance-=totalBet
+    balance.textContent="Balance: " + totalBalance
+}
 }
