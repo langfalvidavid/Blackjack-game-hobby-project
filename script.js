@@ -88,10 +88,11 @@ let message =
 "Congrats! You've got blackjack! 🥳",
 "Sorry, you're out of the game! 😭",
 "Let's see the dealer's cards! 🤞",
-"It's a draw! The dealer has won. 😤",
+"It's a draw! The dealer wins. 😤",
 "Dealer is out! You win! 🥳",
 "Sorry, you lost! 😥",
-"Congrats! You won! 😃"
+"Congrats! You won! 😃",
+"You don't have enough balance!"
 
 // "The dealer has won! You've lost" + balInput + "! ☹️",
 // "Congrats! You've won " + balInput*2 + "!"
@@ -150,12 +151,22 @@ stopBtn.addEventListener("click",function(){
 
 // ---- Dealer system ----
 
+function sleep(milliseconds) {
+    const date = Date.now();
+    let currentDate = null;
+    do {
+      currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
+  }
+
 let dealerSum=0
+let playerWon=false
 function dealer(){
 if(stopPressed){
     do{
         let value = cardValue() //value of generated card
         //generating new elements for each card
+        sleep(2000)
         const img = document.createElement("img") 
         img.id="img"
         img.src ="cards/"+newCard //file path
@@ -169,14 +180,31 @@ if(stopPressed){
         newCard=randomCard() // pulling new card from deck
     }
     while(dealerSum < sumVal && dealerSum<20)
-    if(dealerSum>21){messageDP.textContent=message[5]}
-    else if(dealerSum>sumVal){messageDP.textContent=message[6]}
-    else if(sumVal>dealerSum){message.textContent=message[7]}
+
+    if(dealerSum>21){
+        messageDP.textContent=message[5]
+        playerWon=true
+    }
+    else if(dealerSum>sumVal){
+        messageDP.textContent=message[6]
+        playerwon=false
+    }
+    else if(sumVal>dealerSum){
+        messageDP.textContent=message[7]
+        playerWon=true
+    }
+    else{
+        messageDP.textContent=message[4]
+        playerWon=false
+    }
     
 }
 }
 
 // ---- Bet increase buttons ----
+function removeAlert(){
+    errorMsg.style.display="none"
+}
 
 let totalBet=0
 bet10.addEventListener("click",function(){
@@ -184,32 +212,55 @@ bet10.addEventListener("click",function(){
         totalBet+=10
         bet.textContent="Bet: "+totalBet
     }
-    else{errorMsg.style.display="block"}
-    
-})
+    else{
+        messageDP.textContent=message[8]
+        messageDP.style.color="red"
+        setTimeout(() => { 
+            messageDP.textContent=message[0]
+            messageDP.style.color="#fff" 
+            }, 2000)
+}})
 
 bet50.addEventListener("click",function(){
     if(totalBet+50<=totalBalance){
         totalBet+=50
         bet.textContent="Bet: "+totalBet
     }
-    else{errorMsg.style.display="block"}
-})
+    else{
+        messageDP.textContent=message[8]
+        messageDP.style.color="red"
+        setTimeout(() => { 
+            messageDP.textContent=message[0]
+            messageDP.style.color="#fff" 
+            }, 2000)
+}})
 
 bet100.addEventListener("click",function(){
     if(totalBet+100<=totalBalance){
         totalBet+=100
-        bet.textContent="Bet: "+totalBet
-    }
-    else{errorMsg.style.display="block"}
-})
+        bet.textContent="Bet: "+totalBet}
+    else{
+        messageDP.textContent=message[8]
+        messageDP.style.color="red"
+        setTimeout(() => { 
+            messageDP.textContent=message[0]
+            messageDP.style.color="#fff" 
+            }, 2000)
+}})
 
 bet200.addEventListener("click",function(){
     if(totalBet+200<=totalBalance){
         totalBet+=200
         bet.textContent="Bet: "+totalBet
     }
-    else{errorMsg.style.display="block"}
+    else{
+        messageDP.textContent=message[8]
+        messageDP.style.color="red"
+        setTimeout(() => { 
+            messageDP.textContent=message[0]
+            messageDP.style.color="#fff" 
+            }, 2000)
+    }
 })
 
 
@@ -217,5 +268,6 @@ bet200.addEventListener("click",function(){
 
 let totalBalance = 1000
 function balanceSystem(){
-
+if(playerWon){totalBalance+=totalBet}
+else{totalBalance-=totalBet}
 }

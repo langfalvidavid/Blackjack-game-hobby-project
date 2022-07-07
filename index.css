@@ -22,31 +22,34 @@ h1{
 }
 .display{
     color:white;
-    text-align: start;
     font-size:1.2rem;
     text-shadow: 2px 2px 5px black;
-    margin:0 auto 40px auto;
+    margin:0 auto;
     text-align: center;
 }
-.buttons{
-    
+.buttons-bet{
+    margin-top:5%;
+}
+.buttons, .bet{
     display:flex;
-    max-width: 200px;
-    margin: 5% auto 0 auto;
-    padding-bottom:20px;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
+    margin:0 auto;
     
+}
+.buttons{
+    margin-bottom:20px;
 }
 .sumBal{
     
-    margin: 0;
+    margin: 0 auto;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content:space-evenly;
+    max-width: 800px;
 }
 #new-card-btn, #restart-game-btn, #stop-btn,
 #bet-10, #bet-50, #bet-100, #bet-200{
-    margin-bottom: 10px;
+    margin:0 10px;
     background-color:aqua;
     border:none;
     border-radius:10px;
@@ -73,12 +76,4 @@ h1{
 }
 #cards{
     height: 100px;
-}
-#sum{
-    margin-right:10%;
-}
-#error-msg{
-    display:none;
-    color:red;
-    font-weight: bold;
 }
