@@ -101,7 +101,7 @@ let message =
 `Dealer is out! You've won ${totalBet*2} !🥳`,
 `Sorry, you've lost ${totalBet}! 😥`,
 `Congrats! You've won ${totalBet*2}! 🥳`,
-"You don't have enough balance!",
+"You don't have enough balance!"
 
 
 ]
