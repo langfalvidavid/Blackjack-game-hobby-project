@@ -98,13 +98,12 @@ let message =
 "Sorry, you're out of the game! 😭",
 "Let's see the dealer's cards! 🤞",
 "It's a draw! The dealer wins. 😤",
-"Dealer is out! You win! 🥳",
-"Sorry, you lost! 😥",
-"Congrats! You won! 😃",
-"You don't have enough balance!"
+`Dealer is out! You've won ${totalBet*2} !🥳`,
+`Sorry, you've lost ${totalBet}! 😥`,
+`Congrats! You've won ${totalBet*2}! 🥳`,
+"You don't have enough balance!",
 
-// "The dealer has won! You've lost" + balInput + "! ☹️",
-// "Congrats! You've won " + balInput*2 + "!"
+
 ]
 
 // ---- Game logic ----
