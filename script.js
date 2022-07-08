@@ -67,13 +67,7 @@ let sumVal=0 //sum of cards
     if(inGame===true && stopPressed===false){
     let value = cardValue() //value of generated card
     //generating new elements for each card
-    const img = document.createElement("img") 
-    img.id="img"
-    img.src ="cards/"+newCard //file path
-    img.style.maxWidth="3rem"
-    img.style.margin="0 5px "
-    img.style.borderRadius="10px"
-    document.getElementById("cards").appendChild(img) //pushing newly generated card into its place
+    cardsDP.innerHTML+=`<img src="cards/${newCard}" class="cards" id="img">`
     sumVal+=value
     sumDP.textContent=`Sum: ${sumVal}`//displaying current sum
     gameLogic() // decides whether player has lost or still in game
@@ -176,13 +170,7 @@ if(stopPressed){
     do{
         let value = cardValue() //value of generated card
         //generating new elements for each card
-        const img = document.createElement("img") 
-        img.id="img"
-        img.src ="cards/"+newCard //file path
-        img.style.maxWidth="3rem"
-        img.style.margin="0 5px "
-        img.style.borderRadius="10px"
-        document.getElementById("cards").appendChild(img) //pushing newly generated card into its place
+        cardsDP.innerHTML+=`<img src="cards/${newCard}" class="cards" id="img">`
         dealerSum+=value
         sumDP.textContent=`Sum: ${sumVal}   |   ${dealerSum}`//displaying current sum
         gameLogic() // decides whether player has lost or still in game

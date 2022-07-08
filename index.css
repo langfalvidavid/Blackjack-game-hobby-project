@@ -77,3 +77,8 @@ h1{
 #cards{
     height: 100px;
 }
+#img {
+    max-width: 3rem;
+    margin: 0 5px;
+    border-radius: 10px;
+}
