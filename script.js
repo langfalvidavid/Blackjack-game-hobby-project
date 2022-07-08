@@ -176,7 +176,7 @@ if(stopPressed){
         gameLogic() // decides whether player has lost or still in game
         newCard=randomCard() // pulling new card from deck
     }
-    while(dealerSum <= sumVal && dealerSum<22)
+    while(dealerSum < sumVal && dealerSum<22)
 
     if(dealerSum>21){
         messageDP.textContent=message[5]
