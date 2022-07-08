@@ -29,14 +29,14 @@ const cards = ["2_of_clubs-min.jpg","2_of_diamonds-min.jpg","2_of_hearts-min.jpg
             "king_of_clubs2-min.jpg","king_of_diamonds2-min.jpg","king_of_hearts2-min.jpg","king_of_spades2-min.jpg",
             "queen_of_clubs2-min.jpg","queen_of_diamonds2-min.jpg","queen_of_hearts2-min.jpg","queen_of_spades2-min.jpg"]  
 //random card generator
-function randomCard(){
+function randomCard() {
     return cards[Math.floor(Math.random()*cards.length)]
     
 }
 let newCard = randomCard() //variable for the generated card (i.e. "2_of_clubs-min.jpg")
 
 //function that gives the random card value
-function cardValue(){
+function cardValue() {
     if(newCard[0] === "2" || newCard[0] === "3" || newCard[0] === "4" || newCard[0] === "5" || newCard[0] === "6" 
         || newCard[0] === "7" || newCard[0] === "8" || newCard[0] === "9"  )
         {
@@ -62,9 +62,9 @@ function cardValue(){
 // ---- New card button ----
 
 let sumVal = 0 //sum of cards
- newCardBtn.addEventListener("click",function() {
-    if(totalBet != 0) {
-    if(inGame === true && stopPressed === false){
+ newCardBtn.addEventListener("click", function() {
+    if (totalBet != 0) {
+    if (inGame === true && stopPressed === false) {
     let value = cardValue() //value of generated card
     //generating new elements for each card
     cardsDP.innerHTML += `<img src="cards/${newCard}" class="cards" id="img" alt="Player's card with value ${value}">`
@@ -101,9 +101,9 @@ let message =
 // ---- Game logic ----
 
 let win = false
-function gameLogic(){
-        if(sumVal <= 21){messageDP.textContent=message[0]}
-        else if(sumVal === 21) {messageDP.textContent=message[1]}
+function gameLogic() {
+        if (sumVal <= 21) {messageDP.textContent=message[0]}
+        else if (sumVal === 21) {messageDP.textContent=message[1]}
         else {
         messageDP.textContent = message[2]
         inGame = false
@@ -122,12 +122,12 @@ restartGameBtn.addEventListener("click", function() {
         dealerSum = 0
         //counting how many elements does the cards div have, then deleting them
         let playerChildren = cardsDP.childElementCount
-        for(let i=0;i<playerChildren;i++) {
+        for(let i = 0; i < playerChildren; i++) {
             let del = document.getElementById("img")
             del.remove()
     }
-    bet.textContent = "Bet: 0"
-    totalBet = 0
+        bet.textContent = "Bet: 0"
+        totalBet = 0
         inGame = true
         stopPressed = false
         playerWon = false
@@ -172,7 +172,7 @@ if(stopPressed) {
     }
     while (dealerSum < sumVal && dealerSum<20)
 }
-if (dealerSum>21) {
+if (dealerSum > 21) {
     messageDP.textContent = message[5]
     playerWon = true
 }
@@ -205,7 +205,7 @@ bet10.addEventListener("click", function() {
         setTimeout( () => { 
             messageDP.textContent = message[0]
             messageDP.style.color = "#fff" 
-            }, 2000)
+        }, 2000)
 }})
 
 bet50.addEventListener("click", function() {
