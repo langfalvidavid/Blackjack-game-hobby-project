@@ -67,7 +67,7 @@ let sumVal=0 //sum of cards
     if(inGame===true && stopPressed===false){
     let value = cardValue() //value of generated card
     //generating new elements for each card
-    cardsDP.innerHTML+=`<img src="cards/${newCard}" class="cards" id="img">`
+    cardsDP.innerHTML+=`<img src="cards/${newCard}" class="cards" id="img" alt="Player's card with value ${value}">`
     sumVal+=value
     sumDP.textContent=`Sum: ${sumVal}`//displaying current sum
     gameLogic() // decides whether player has lost or still in game
@@ -120,9 +120,8 @@ restartGameBtn.addEventListener("click",function(){
         sumDP.textContent="Sum: 0"
         sumVal=0
         dealerSum=0
-        const deleteCards = document.getElementById("cards")
         //counting how many elements does the cards div have, then deleting them
-        let playerChildren = deleteCards.childElementCount
+        let playerChildren = cardsDP.childElementCount
         for(let i=0;i<playerChildren;i++){
             let del = document.getElementById("img")
             del.remove()
@@ -131,6 +130,7 @@ restartGameBtn.addEventListener("click",function(){
     totalBet=0
         inGame=true
         stopPressed=false
+        playerWon=false
 })
 
 // ---- Stop button ----
@@ -155,13 +155,6 @@ stopBtn.addEventListener("click",function(){
 
 // ---- Dealer system ----
 
-function sleep(milliseconds) {
-    const date = Date.now();
-    let currentDate = null;
-    do {
-      currentDate = Date.now();
-    } while (currentDate - date < milliseconds);
-  }
 
 let dealerSum=0
 let playerWon
@@ -170,32 +163,34 @@ if(stopPressed){
     do{
         let value = cardValue() //value of generated card
         //generating new elements for each card
-        cardsDP.innerHTML+=`<img src="cards/${newCard}" class="cards" id="img">`
+        cardsDP.innerHTML+=`<img src="cards/${newCard}" class="cards" id="img" alt="Dealer's card with value ${value}">`
         dealerSum+=value
         sumDP.textContent=`Sum: ${sumVal}   |   ${dealerSum}`//displaying current sum
         gameLogic() // decides whether player has lost or still in game
         newCard=randomCard() // pulling new card from deck
+        
     }
-    while(dealerSum < sumVal && dealerSum<22)
+    while(dealerSum < sumVal && dealerSum<20)
 
-    if(dealerSum>21){
-        messageDP.textContent=message[5]
-        playerWon=true
-    }
-    else if(dealerSum>sumVal){
-        messageDP.textContent=message[6]
-        playerwon=false
-    }
-    else if(sumVal>dealerSum){
-        messageDP.textContent=message[7]
-        playerWon=true
-    }
-    else{
-        messageDP.textContent=message[4]
-        playerWon=false
-    }
-    balanceSystem()
+    
 }
+if(dealerSum>21){
+    messageDP.textContent=message[5]
+    playerWon=true
+}
+else if(dealerSum>sumVal){
+    messageDP.textContent=message[6]
+    playerwon=false
+}
+else if(sumVal>dealerSum){
+    messageDP.textContent=message[7]
+    playerWon=true
+}
+else{
+    messageDP.textContent=message[4]
+    playerWon=false
+}
+balanceSystem()
 }
 
 // ---- Bet increase buttons ----
