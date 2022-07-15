@@ -278,9 +278,17 @@ if(stopPressed) {
        cardsDP.insertAdjacentHTML("beforeend",
              `<img src="cards/${newCard.image}" id="img" alt="Player's card with value ${value}">`)
         dealerSum += value
-        sumDP.textContent = `Sum: ${sumVal}   |   ${dealerSum}`//displaying current sum
+        if(!hasAce){
+            sumDP.textContent = `Sum: ${sumVal}   |   ${dealerSum}`//displaying current sum
+            gameLogic() // decides whether player has lost or still in game
+            newCard = randomCard() // pulling new card from deck
+        }
+        else{
+            sumDP.textContent = `Sum: ${sumVal}   |   ${sumValWithAce}   |   ${dealerSum}`//displaying current sum
         gameLogic() // decides whether player has lost or still in game
         newCard = randomCard() // pulling new card from deck
+        }
+        
     }
     while (dealerSum < sumVal && dealerSum<20)
 }
@@ -288,11 +296,11 @@ if (dealerSum > 21) {
     messageDP.textContent = message[5]
     playerWon = true
 }
-else if (dealerSum > sumVal) {
+else if (dealerSum > sumVal || dealerSum > sumValWithAce) {
     messageDP.textContent = message[6]
     playerwon = false
 }
-else if (sumVal > dealerSum) {
+else if (sumVal > dealerSum || (hasAce && sumValWithAce > dealerSum)) {
     messageDP.textContent = message[7]
     playerWon = true
 }
