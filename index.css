@@ -80,7 +80,7 @@ h1{
 #img {
     max-width: 3rem;
     margin: 0 5px;
-    border-radius: 10px;
+    border-radius: 6px;
     animation: cardAnimation 1s;
 }
 
