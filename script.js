@@ -254,7 +254,7 @@ stopBtn.addEventListener("click", function() {
         separate.id = "img"
         separate.style.margin = "0 30px"
         separate.style.display = "inline-block"
-        separate.style.height = "100px"
+        separate.style.height = "100%"
         separate.style.width = "5px"
         separate.style.color = "#fff"
         separate.style.backgroundColor = "#fff"

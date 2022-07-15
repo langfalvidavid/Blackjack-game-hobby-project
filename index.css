@@ -21,6 +21,7 @@ h1{
     text-shadow: 2px 2px 5px black;
 }
 .display{
+    max-width: 600px;
     color:white;
     font-size:1.2rem;
     text-shadow: 2px 2px 5px black;
@@ -80,10 +81,11 @@ h1{
 }
 
 #cards{
-    height: 100px;
+    height: 5rem;
 }
 #img {
-    max-width: 3rem;
+    height: 100%;
+    max-width:100%;
     margin: 0 5px;
     border-radius: 6px;
     animation: cardAnimation 1s;
