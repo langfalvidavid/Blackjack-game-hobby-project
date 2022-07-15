@@ -53,7 +53,6 @@ function randomCard() {
 let newCard = randomCard() //variable for the generated card (i.e. "2_of_clubs-min.jpg")
 
 //function that gives the random card value
-/*
 function cardValue() {
     if(newCard[0] === "2" || newCard[0] === "3" || newCard[0] === "4" || newCard[0] === "5" || newCard[0] === "6" 
         || newCard[0] === "7" || newCard[0] === "8" || newCard[0] === "9"  )
@@ -76,14 +75,14 @@ function cardValue() {
             }
         }
 }
-*/
+
 // ---- New card button ----
 
 let sumVal = 0 //sum of cards
  newCardBtn.addEventListener("click", function() {
     if (totalBet != 0) {
     if (inGame && !stopPressed) {
-    //let value = cardValue() //value of generated card
+    let value = cardValue() //value of generated card
     //generating new elements for each card
     cardsDP.insertAdjacentHTML("beforeend", `<img src="cards/${newCard}" id="img" alt="Player's card with value ${value}">`)
     sumVal += value
@@ -179,7 +178,7 @@ let playerWon
 function dealer() {
 if(stopPressed) {
     do {
-        //let value = cardValue() //value of generated card
+        let value = cardValue() //value of generated card
         //generating new elements for each card
         cardsDP.insertAdjacentHTML("beforeend", `<img src="cards/${newCard}" id="img" alt="Player's card with value ${value}">`)
         dealerSum += value
