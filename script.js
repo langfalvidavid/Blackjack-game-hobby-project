@@ -15,20 +15,59 @@ const bet50 = document.getElementById("bet-50")
 const bet100 = document.getElementById("bet-100")
 const bet200 = document.getElementById("bet-200")
 
-const cards = ["2_of_clubs.png","2_of_diamonds.png","2_of_hearts.png","2_of_spades.png",
-            "3_of_clubs.png","3_of_diamonds.png","3_of_hearts.png","3_of_spades.png",
-            "4_of_clubs.png","4_of_diamonds.png","4_of_hearts.png","4_of_spades.png",
-            "5_of_clubs.png","5_of_diamonds.png","5_of_hearts.png","5_of_spades.png",
-            "6_of_clubs.png","6_of_diamonds.png","6_of_hearts.png","6_of_spades.png",
-            "7_of_clubs.png","7_of_diamonds.png","7_of_hearts.png","7_of_spades.png",
-            "8_of_clubs.png","8_of_diamonds.png","8_of_hearts.png","8_of_spades.png",
-            "9_of_clubs.png","9_of_diamonds.png","9_of_hearts.png","9_of_spades.png",
-            "10_of_clubs.png","10_of_diamonds.png","10_of_hearts.png","10_of_spades.png",
-            "ace_of_clubs.png","ace_of_diamonds.png","ace_of_hearts.png","ace_of_spades.png",
-            "jack_of_clubs2.png","jack_of_diamonds2.png","jack_of_hearts2.png","jack_of_spades2.png",
-            "king_of_clubs2.png","king_of_diamonds2.png","king_of_hearts2.png","king_of_spades2.png",
-            "queen_of_clubs2.png","queen_of_diamonds2.png","queen_of_hearts2.png","queen_of_spades2.png"]  
-
+const cards = [
+{image:"2_of_clubs.png", value: 2},
+{image:"3_of_clubs.png", value: 3},
+{image:"4_of_clubs.png", value: 4},
+{image:"5_of_clubs.png", value: 5},
+{image:"6_of_clubs.png", value: 6},
+{image:"7_of_clubs.png", value: 7},
+{image:"8_of_clubs.png", value: 8},
+{image:"9_of_clubs.png", value: 9},
+{image:"2_of_diamonds.png", value: 2},
+{image:"3_of_diamonds.png", value: 3},
+{image:"4_of_diamonds.png", value: 4},
+{image:"5_of_diamonds.png", value: 5},
+{image:"6_of_diamonds.png", value: 6},
+{image:"7_of_diamonds.png", value: 7},
+{image:"8_of_diamonds.png", value: 8},
+{image:"9_of_diamonds.png", value: 9},
+{image:"2_of_hearts.png", value: 2},
+{image:"3_of_hearts.png", value: 3},
+{image:"4_of_hearts.png", value: 4},
+{image:"5_of_hearts.png", value: 5},
+{image:"6_of_hearts.png", value: 6},
+{image:"7_of_hearts.png", value: 7},
+{image:"8_of_hearts.png", value: 8},
+{image:"9_of_hearts.png", value: 9},
+{image:"2_of_spades.png", value: 2},
+{image:"3_of_spades.png", value: 3},
+{image:"4_of_spades.png", value: 4},
+{image:"5_of_spades.png", value: 5},
+{image:"6_of_spades.png", value: 6},
+{image:"7_of_spades.png", value: 7},
+{image:"8_of_spades.png", value: 8},
+{image:"10_of_spades.png", value: 10},
+{image:"10_of_hearts.png", value: 10},
+{image:"10_of_diamonds.png", value: 10},
+{image:"10_of_clubs.png", value: 10},
+{image:"ace_of_clubs.png", value: 10},
+{image:"ace_of_diamonds.png", value: 10},
+{image:"ace_of_hearts.png", value: 10},
+{image:"ace_of_spades.png", value: 10},
+{image:"jack_of_clubs2.png", value: 10},
+{image:"jack_of_diamonds2.png", value: 10},
+{image:"jack_of_hearts2.png", value: 10},
+{image:"jack_of_spades2.png", value: 10},
+{image:"king_of_clubs2.png", value: 10},
+{image:"king_of_diamonds2.png", value: 10},
+{image:"king_of_hearts2.png", value: 10},
+{image:"king_of_spades2.png", value: 10},
+{image:"queen_of_clubs2.png", value: 10},
+{image:"queen_of_diamonds2.png", value: 10},
+{image:"queen_of_hearts2.png", value: 10},
+{image:"queen_of_spades2.png", value: 10},
+]
 
 // ---- Preloading images ----
 
@@ -60,28 +99,28 @@ function randomCard() {
 let newCard = randomCard() //variable for the generated card (i.e. "2_of_clubs-min.jpg")
 
 //function that gives the random card value
-function cardValue() {
-    if(newCard[0] === "2" || newCard[0] === "3" || newCard[0] === "4" || newCard[0] === "5" || newCard[0] === "6" 
-        || newCard[0] === "7" || newCard[0] === "8" || newCard[0] === "9"  )
-        {
-            return Number(newCard[0])
-        }
-        else{
-            let string = ""
-            let i = 0;
-            while(newCard[i] != '_'){
-                string += newCard[i]
-                i++
-            }
-            switch(string){
-                case "10":return 10
-                case "ace":return 11
-                case "jack":return 10
-                case "queen":return 10
-                case "king":return 10
-            }
-        }
-}
+// function cardValue() {
+//     if(newCard[0] === "2" || newCard[0] === "3" || newCard[0] === "4" || newCard[0] === "5" || newCard[0] === "6" 
+//         || newCard[0] === "7" || newCard[0] === "8" || newCard[0] === "9"  )
+//         {
+//             return Number(newCard[0])
+//         }
+//         else{
+//             let string = ""
+//             let i = 0;
+//             while(newCard[i] != '_'){
+//                 string += newCard[i]
+//                 i++
+//             }
+//             switch(string){
+//                 case "10":return 10
+//                 case "ace":return 11
+//                 case "jack":return 10
+//                 case "queen":return 10
+//                 case "king":return 10
+//             }
+//         }
+// }
 
 // ---- New card button ----
 
@@ -93,9 +132,9 @@ let sumVal = 0 //sum of cards
     bet200.style.display="none"
     if (totalBet != 0) {
     if (inGame && !stopPressed) {
-    let value = cardValue() //value of generated card
+    let value = newCard.value //value of generated card
     //generating new elements for each card
-    cardsDP.insertAdjacentHTML("beforeend", `<img src="cards/${newCard}" id="img" alt="Player's card with value ${value}">`)
+    cardsDP.insertAdjacentHTML("beforeend", `<img src="cards/${newCard.image}" id="img" alt="Player's card with value ${value}">`)
     sumVal += value
     sumDP.textContent = `Sum: ${sumVal}`//displaying current sum
     gameLogic() // decides whether player has lost or still in game
@@ -210,10 +249,10 @@ let playerWon
 function dealer() {
 if(stopPressed) {
     do { 
-        let value = cardValue() //value of generated card
+        let value = newCard.value //value of generated card
         //generating new elements for each card
        cardsDP.insertAdjacentHTML("beforeend",
-             `<img src="cards/${newCard}" id="img" alt="Player's card with value ${value}">`)
+             `<img src="cards/${newCard.image}" id="img" alt="Player's card with value ${value}">`)
         dealerSum += value
         sumDP.textContent = `Sum: ${sumVal}   |   ${dealerSum}`//displaying current sum
         gameLogic() // decides whether player has lost or still in game
