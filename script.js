@@ -31,7 +31,7 @@ const cards = ["2_of_clubs.png","2_of_diamonds.png","2_of_hearts.png","2_of_spad
 
 
 // ---- Preloading images ----
-/*
+
 let preloaded = 0;
  
 function preLoader(e) {
@@ -42,7 +42,7 @@ function preLoader(e) {
         tempImage.src = cards[i];
     }
 }
- */
+ 
 
 //random card generator
 
