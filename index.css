@@ -83,12 +83,25 @@ h1{
     border-radius: 6px;
     animation: cardAnimation 1s;
 }
+#message{
+    animation: messageAnimation 1s;
+}
 
 @keyframes cardAnimation{
-    0%{
+    from {
+        transform: translateY(-350%);
+      }
+    
+      to {
+        transform: translateY(0%);
+      }
+    }
+
+@keyframes messageAnimation{
+    from {
         opacity: 0;
     }
-    100%{
+    to {
         opacity: 1;
     }
 }

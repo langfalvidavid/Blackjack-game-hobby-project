@@ -164,6 +164,7 @@ stopBtn.addEventListener("click", function() {
         separate.style.width = "5px"
         separate.style.color = "#fff"
         separate.style.backgroundColor = "#fff"
+        separate.style.animation = "cardAnimation 1s"
         document.getElementById("cards").appendChild(separate)
         dealer()
     }
@@ -180,7 +181,10 @@ if(stopPressed) {
     do {
         let value = cardValue() //value of generated card
         //generating new elements for each card
-        cardsDP.insertAdjacentHTML("beforeend", `<img src="cards/${newCard}" id="img" alt="Player's card with value ${value}">`)
+        window.setTimeout(
+            cardsDP.insertAdjacentHTML("beforeend",
+             `<img src="cards/${newCard}" id="img" alt="Player's card with value ${value}">`)
+             , 2000)
         dealerSum += value
         sumDP.textContent = `Sum: ${sumVal}   |   ${dealerSum}`//displaying current sum
         gameLogic() // decides whether player has lost or still in game
