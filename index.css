@@ -74,6 +74,11 @@ h1{
 #bet-10:active, #bet-50:active, #bet-100:active, #bet-200:active{
     transform:scale(0.5);
 }
+
+#restart-game-btn{
+    display:none;
+}
+
 #cards{
     height: 100px;
 }

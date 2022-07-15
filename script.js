@@ -42,6 +42,13 @@ function preLoader(e) {
         tempImage.src = cards[i];
     }
 }
+
+//delay
+ 
+function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+  }
+  
  
 
 //random card generator
@@ -80,6 +87,10 @@ function cardValue() {
 
 let sumVal = 0 //sum of cards
  newCardBtn.addEventListener("click", function() {
+    bet10.style.display="none"
+    bet50.style.display="none"
+    bet100.style.display="none"
+    bet200.style.display="none"
     if (totalBet != 0) {
     if (inGame && !stopPressed) {
     let value = cardValue() //value of generated card
@@ -126,11 +137,30 @@ function gameLogic() {
         inGame = false
         playerWon = false
         balanceSystem()
+        restartDisplayReverse()
+
     }
 }
 
 // ---- Restart game button ----
-
+function restartDisplay(){
+        bet10.style.display="block"
+        bet50.style.display="block"
+        bet100.style.display="block"
+        bet200.style.display="block"
+        newCardBtn.style.display="block"
+        stopBtn.style.display="block"
+        restartGameBtn.style.display="none"
+}
+function restartDisplayReverse(){
+    bet10.style.display="none"
+    bet50.style.display="none"
+    bet100.style.display="none"
+    bet200.style.display="none"
+    newCardBtn.style.display="none"
+    stopBtn.style.display="none"
+    restartGameBtn.style.display="block"
+}
 //resetting the game to its default stage
 restartGameBtn.addEventListener("click", function() {
         messageDP.textContent = "Draw a card to start the game! 😀"
@@ -148,6 +178,7 @@ restartGameBtn.addEventListener("click", function() {
         inGame = true
         stopPressed = false
         playerWon = false
+        restartDisplay()
 })
 
 // ---- Stop button ----
@@ -166,7 +197,7 @@ stopBtn.addEventListener("click", function() {
         separate.style.backgroundColor = "#fff"
         separate.style.animation = "cardAnimation 1s"
         document.getElementById("cards").appendChild(separate)
-        dealer()
+        delay(1000).then(() => dealer())
     }
     
 })
@@ -178,18 +209,15 @@ let dealerSum = 0
 let playerWon
 function dealer() {
 if(stopPressed) {
-    do {
+    do { 
         let value = cardValue() //value of generated card
         //generating new elements for each card
-        window.setTimeout(
-            cardsDP.insertAdjacentHTML("beforeend",
+       cardsDP.insertAdjacentHTML("beforeend",
              `<img src="cards/${newCard}" id="img" alt="Player's card with value ${value}">`)
-             , 2000)
         dealerSum += value
         sumDP.textContent = `Sum: ${sumVal}   |   ${dealerSum}`//displaying current sum
         gameLogic() // decides whether player has lost or still in game
         newCard = randomCard() // pulling new card from deck
-        
     }
     while (dealerSum < sumVal && dealerSum<20)
 }
@@ -210,6 +238,9 @@ else {
     playerWon = false
 }
 balanceSystem()
+newCardBtn.style.display="none"
+stopBtn.style.display="none"
+restartGameBtn.style.display="block"
 }
 
 // ---- Bet increase buttons ----
