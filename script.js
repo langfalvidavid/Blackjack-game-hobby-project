@@ -30,21 +30,23 @@ const cards = ["2_of_clubs-min.jpg","2_of_diamonds-min.jpg","2_of_hearts-min.jpg
             "queen_of_clubs2-min.jpg","queen_of_diamonds2-min.jpg","queen_of_hearts2-min.jpg","queen_of_spades2-min.jpg"]  
 //random card generator
 
+// ---- Preloading images ----
+
 let preloaded = 0;
  
 function preLoader(e) {
-    for (var i = 0; i < cards.length; i++) {
-        var tempImage = new Image();
+    for (let i = 0; i < cards.length; i++) {
+        let tempImage = new Image();
          
         tempImage.addEventListener("load", progress, true);
-        tempImage.src = imageArray[i];
+        tempImage.src = cards[i];
     }
 }
  
 function progress() {
     preloaded++;
      
-    if (preloaded === imageArray.length) {
+    if (preloaded === cards.length) {
         //ALL Images have been loaded, perform the desired action
     }
 }
