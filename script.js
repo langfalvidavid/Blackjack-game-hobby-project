@@ -81,10 +81,10 @@ function cardValue() {
 let sumVal = 0 //sum of cards
  newCardBtn.addEventListener("click", function() {
     if (totalBet != 0) {
-    if (inGame === true && stopPressed === false) {
+    if (inGame && !stopPressed) {
     let value = cardValue() //value of generated card
     //generating new elements for each card
-    cardsDP.innerHTML += `<img src="cards/${newCard}" id="img" alt="Player's card with value ${value}">`
+    cardsDP.insertAdjacentHTML("beforeend", `<img src="cards/${newCard}" id="img" alt="Player's card with value ${value}">`)
     sumVal += value
     sumDP.textContent = `Sum: ${sumVal}`//displaying current sum
     gameLogic() // decides whether player has lost or still in game
