@@ -47,14 +47,15 @@ const cards = [
 {image:"6_of_spades.png", value: 6},
 {image:"7_of_spades.png", value: 7},
 {image:"8_of_spades.png", value: 8},
+{image:"9_of_spades.png", value: 9},
 {image:"10_of_spades.png", value: 10},
 {image:"10_of_hearts.png", value: 10},
 {image:"10_of_diamonds.png", value: 10},
 {image:"10_of_clubs.png", value: 10},
-{image:"ace_of_clubs.png", value: 10},
-{image:"ace_of_diamonds.png", value: 10},
-{image:"ace_of_hearts.png", value: 10},
-{image:"ace_of_spades.png", value: 10},
+{image:"ace_of_clubs.png", value: 11},
+{image:"ace_of_diamonds.png", value: 11},
+{image:"ace_of_hearts.png", value: 11},
+{image:"ace_of_spades.png", value: 11},
 {image:"jack_of_clubs2.png", value: 10},
 {image:"jack_of_diamonds2.png", value: 10},
 {image:"jack_of_hearts2.png", value: 10},
@@ -125,20 +126,35 @@ let newCard = randomCard() //variable for the generated card (i.e. "2_of_clubs-m
 // ---- New card button ----
 
 let sumVal = 0 //sum of cards
+let sumValWithAce = 0
+let hasAce = false //if player pulls ace, we have to display 2 sums
  newCardBtn.addEventListener("click", function() {
-    bet10.style.display="none"
-    bet50.style.display="none"
-    bet100.style.display="none"
-    bet200.style.display="none"
+    
     if (totalBet != 0) {
     if (inGame && !stopPressed) {
     let value = newCard.value //value of generated card
     //generating new elements for each card
+    if(value===11){
+        hasAce=true
+    }
+        
     cardsDP.insertAdjacentHTML("beforeend", `<img src="cards/${newCard.image}" id="img" alt="Player's card with value ${value}">`)
-    sumVal += value
-    sumDP.textContent = `Sum: ${sumVal}`//displaying current sum
+    if (hasAce) {
+        sumVal += value
+        sumValWithAce = sumVal-10
+        sumDP.textContent = `Sum: ${sumVal}  |  ${sumValWithAce}`//displaying current sum
+    }
+    else{
+        sumVal += value
+        sumDP.textContent = `Sum: ${sumVal}`//displaying current sum
+    }
+    console.log(sumVal)
     gameLogic() // decides whether player has lost or still in game
     newCard = randomCard() // pulling new card from deck
+    bet10.style.display="none"
+    bet50.style.display="none"
+    bet100.style.display="none"
+    bet200.style.display="none"
 }}
 else {
     messageDP.textContent = "Place your bets first!"
@@ -171,13 +187,19 @@ let win = false
 function gameLogic() {
         if (sumVal <= 21) {messageDP.textContent=message[0]}
         else if (sumVal === 21) {messageDP.textContent=message[1]}
-        else {
+        else if (!hasAce && sumVal > 21){
         messageDP.textContent = message[2]
         inGame = false
         playerWon = false
         balanceSystem()
         restartDisplayReverse()
-
+    }
+    else if (hasAce && sumValWithAce > 21){
+        messageDP.textContent = message[2]
+        inGame = false
+        playerWon = false
+        balanceSystem()
+        restartDisplayReverse()
     }
 }
 
@@ -218,12 +240,14 @@ restartGameBtn.addEventListener("click", function() {
         stopPressed = false
         playerWon = false
         restartDisplay()
+        hasAce = false
 })
 
 // ---- Stop button ----
+
 let stopPressed = false //Basically the switch between gamestates
 stopBtn.addEventListener("click", function() {
-    if (sumVal <= 21 && stopPressed === false && sumVal != 0) {
+    if ((sumVal <= 21 || (hasAce && sumValWithAce<=21) ) && stopPressed === false && sumVal != 0) {
         messageDP.textContent = message[3]
         stopPressed = true
         const separate = document.createElement("div")
