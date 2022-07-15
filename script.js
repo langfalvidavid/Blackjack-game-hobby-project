@@ -180,7 +180,7 @@ if(stopPressed) {
     do {
         let value = cardValue() //value of generated card
         //generating new elements for each card
-        cardsDP.innerHTML += `<img src="cards/${newCard}" class="cards" id="img" alt="Dealer's card with value ${value}">`
+        cardsDP.insertAdjacentHTML("beforeend", `<img src="cards/${newCard}" id="img" alt="Player's card with value ${value}">`)
         dealerSum += value
         sumDP.textContent = `Sum: ${sumVal}   |   ${dealerSum}`//displaying current sum
         gameLogic() // decides whether player has lost or still in game
