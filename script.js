@@ -28,7 +28,7 @@ const cards = ["2_of_clubs-min.jpg","2_of_diamonds-min.jpg","2_of_hearts-min.jpg
             "jack_of_clubs2-min.jpg","jack_of_diamonds2-min.jpg","jack_of_hearts2-min.jpg","jack_of_spades2-min.jpg",
             "king_of_clubs2-min.jpg","king_of_diamonds2-min.jpg","king_of_hearts2-min.jpg","king_of_spades2-min.jpg",
             "queen_of_clubs2-min.jpg","queen_of_diamonds2-min.jpg","queen_of_hearts2-min.jpg","queen_of_spades2-min.jpg"]  
-//random card generator
+
 
 // ---- Preloading images ----
 
@@ -43,16 +43,8 @@ function preLoader(e) {
     }
 }
  
-function progress() {
-    preloaded++;
-     
-    if (preloaded === cards.length) {
-        //ALL Images have been loaded, perform the desired action
-    }
-}
-this.addEventListener("DOMContentLoaded", preLoader, true);
 
-
+//random card generator
 
 function randomCard() {
     return cards[Math.floor(Math.random()*cards.length)]
