@@ -29,6 +29,29 @@ const cards = ["2_of_clubs-min.jpg","2_of_diamonds-min.jpg","2_of_hearts-min.jpg
             "king_of_clubs2-min.jpg","king_of_diamonds2-min.jpg","king_of_hearts2-min.jpg","king_of_spades2-min.jpg",
             "queen_of_clubs2-min.jpg","queen_of_diamonds2-min.jpg","queen_of_hearts2-min.jpg","queen_of_spades2-min.jpg"]  
 //random card generator
+
+let preloaded = 0;
+ 
+function preLoader(e) {
+    for (var i = 0; i < cards.length; i++) {
+        var tempImage = new Image();
+         
+        tempImage.addEventListener("load", progress, true);
+        tempImage.src = imageArray[i];
+    }
+}
+ 
+function progress() {
+    preloaded++;
+     
+    if (preloaded === imageArray.length) {
+        //ALL Images have been loaded, perform the desired action
+    }
+}
+this.addEventListener("DOMContentLoaded", preLoader, true);
+
+
+
 function randomCard() {
     return cards[Math.floor(Math.random()*cards.length)]
     
@@ -67,7 +90,7 @@ let sumVal = 0 //sum of cards
     if (inGame === true && stopPressed === false) {
     let value = cardValue() //value of generated card
     //generating new elements for each card
-    cardsDP.innerHTML += `<img src="cards/${newCard}" class="cards" id="img" alt="Player's card with value ${value}">`
+    cardsDP.innerHTML += `<img src="cards/${newCard}" id="img" alt="Player's card with value ${value}">`
     sumVal += value
     sumDP.textContent = `Sum: ${sumVal}`//displaying current sum
     gameLogic() // decides whether player has lost or still in game
