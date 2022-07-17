@@ -337,7 +337,7 @@ async function dealer() {
                  ((hasAce && !dealerAce) && ((sumVal<22 && sumVal>dealerSum) ||
                  (sumVal>21 && sumValWithAce<22 && dealerSum<sumValWithAce))) ||
                  ((!hasAce && dealerAce) && ((sumVal<22 && dealerSum<22 && sumVal>dealerSum) ||
-                 (sumVal<21 && dealerSum>21 && sumVal>dealerSumWithAce)))         
+                 (sumVal<22 && dealerSum>21 && sumVal>dealerSumWithAce)))         
       );
 
       if (
