@@ -310,13 +310,13 @@ async function dealer() {
          } else if (dealerAce && dealerSum > 21) {
             sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSumWithAce}`;
          } else if (!dealerAce && hasAce && sumVal <= 21) {
-            sumDP.textContent = `Sum: ${sumVal}   /   ${sumValWithAce}      |      ${dealerSum}`;
+            sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSum}`;
          } else if (!dealerAce && hasAce && sumVal > 21) {
             sumDP.textContent = `Sum: ${sumValWithAce}      |      ${dealerSum}`;
          } else if (dealerAce && sumVal < 21 && dealerSum < 21) {
-            sumDP.textContent = `Sum: ${sumVal}   /   ${sumValWithAce}      |      ${dealerSum}   /   ${dealerSumWithAce}`;
+            sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSum}   /   ${dealerSumWithAce}`;
          } else if (dealerAce && sumVal > 21 && dealerSum < 21) {
-            sumDP.textContent = `Sum: ${sumValWithAce}      |      ${dealerSum}   /   ${dealerSumWithAce}`;
+            sumDP.textContent = `Sum: ${sumValWithAce}      |      ${dealerSum}`;
          } else if (dealerAce && sumVal < 21 && dealerSum > 21) {
             sumDP.textContent = `Sum: ${sumValWithAce}      |      ${dealerSumWithAce}`;
          } else if (dealerAce && sumVal > 21 && dealerSum > 21) {
@@ -333,10 +333,11 @@ async function dealer() {
          gameLogic(); // decides whether player has lost or still in game
          newCard = randomCard(); // pulling new card from deck
          await delay(1500);
-      } while (
-         ((dealerSum < sumVal || sumValWithAce > dealerSum) && dealerSum < 21) ||
-         (dealerAce && dealerSumWithAce < sumVal) ||
-         dealerSumWithAce < sumValWithAce
+      } while (  ((!hasAce && !dealerAce) && (sumVal>dealerSum)) ||
+                 ((hasAce && !dealerAce) && ((sumVal<22 && sumVal>dealerSum) ||
+                 (sumVal>21 && sumValWithAce<22 && dealerSum<sumValWithAce))) ||
+                 ((!hasAce && dealerAce) && ((sumVal<22 && dealerSum<22 && sumVal>dealerSum) ||
+                 (sumVal<21 && dealerSum>21 && sumVal>dealerSumWithAce)))         
       );
 
       if (
@@ -359,7 +360,7 @@ async function dealer() {
       ) {
          messageDP.textContent = message[7];
          playerWon = true;
-      } else {
+      } else if (sumVal === dealerSum || sumVal === dealerSumWithAce || sumValWithAce === dealerSum || sumValWithAce === dealerSumWithAce) {
          messageDP.textContent = message[4];
          playerWon = false;
       }
