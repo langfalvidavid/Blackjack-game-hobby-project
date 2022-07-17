@@ -81,7 +81,7 @@ function preLoader(e) {
         let tempImage = new Image();
          
         tempImage.addEventListener("load", progress, true);
-        tempImage.src = cards[i];
+        tempImage.src = cards[i].image;
     }
 }
 
