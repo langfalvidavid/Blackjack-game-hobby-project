@@ -10,7 +10,7 @@ body{
     
 }
 .container{
-    margin-top:10px;
+    margin-top:.33em;
     max-width:100%;
 }
 
@@ -39,18 +39,18 @@ h1{
     
 }
 .buttons{
-    margin-bottom:20px;
+    margin-bottom:.5em;
 }
 .sumBal{
     
     margin: 0 auto;
     display: flex;
     justify-content:space-evenly;
-    max-width: 800px;
+    
 }
 #new-card-btn, #restart-game-btn, #stop-btn,
 #bet-10, #bet-50, #bet-100, #bet-200{
-    margin:0 10px;
+    margin:0 .5em;
     background-color:aqua;
     border:none;
     border-radius:10px;
@@ -58,7 +58,7 @@ h1{
     font-size: .75rem;
     font-weight: bold;
     color:black;
-    padding:12px 15px;
+    padding:.6em .8em;
     text-shadow: 1px 1px 0px rgb(10, 10, 10);
     cursor: pointer;
     outline: 0;
@@ -82,15 +82,19 @@ h1{
 
 #cards{
     display: inline-block;
-    height: 5rem;
+    height: 4em;
 }
-#img {
-    height: 100%;
-    max-width:100%;
-    margin: 0 5px;
+/* #img {
+    height: 80%;
+    
+} */
+img{
+    height: 80%;
+    margin: 0 .1em;
     border-radius: 6px;
     animation: cardAnimation 1s;
 }
+
 #message{
     animation: messageAnimation 1s;
 }
@@ -98,10 +102,12 @@ h1{
 @keyframes cardAnimation{
     from {
         transform: translateY(-350%);
+        opacity: 0;
       }
     
       to {
         transform: translateY(0%);
+        opacity: 1;
       }
     }
 

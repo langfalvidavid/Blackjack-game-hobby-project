@@ -142,7 +142,7 @@ let hasAce = false //if player pulls ace, we have to display 2 sums
     if (hasAce) {
         sumVal += value
         sumValWithAce = sumVal-10
-        sumDP.textContent = `Sum: ${sumVal}  |  ${sumValWithAce}`//displaying current sum
+        sumDP.textContent = `Sum: ${sumVal}  /  ${sumValWithAce}`//displaying current sum
     }
     else{
         sumVal += value
@@ -252,9 +252,9 @@ stopBtn.addEventListener("click", function() {
         stopPressed = true
         const separate = document.createElement("div")
         separate.id = "img"
-        separate.style.margin = "0 30px"
+        separate.style.margin = "0 1em"
         separate.style.display = "inline-block"
-        separate.style.height = "100%"
+        separate.style.height = "80%"
         separate.style.width = "5px"
         separate.style.color = "#fff"
         separate.style.backgroundColor = "#fff"
@@ -284,7 +284,7 @@ if(stopPressed) {
             newCard = randomCard() // pulling new card from deck
         }
         else{
-            sumDP.textContent = `Sum: ${sumVal}   |   ${sumValWithAce}   |   ${dealerSum}`//displaying current sum
+            sumDP.textContent = `Sum: ${sumVal}   /   ${sumValWithAce}   |   ${dealerSum}`//displaying current sum
         gameLogic() // decides whether player has lost or still in game
         newCard = randomCard() // pulling new card from deck
         }
