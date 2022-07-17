@@ -12,7 +12,7 @@ const restartGameBtn = document.getElementById("restart-game-btn") //Button that
 const stopBtn = document.getElementById("stop-btn") //Button that stops player action / starts dealer action
 const refillBalanceBtn = document.getElementById("refill-balance-btn") //Button to refill balance if its 0
 
-const bet10 = document.getElementById("bet-10")
+const betAllIn = document.getElementById("bet-all-in")
 const bet50 = document.getElementById("bet-50")
 const bet100 = document.getElementById("bet-100")
 const bet200 = document.getElementById("bet-200")
@@ -156,7 +156,7 @@ let hasAce = false //if player pulls ace, we have to display 2 sums
     console.log("aces: " + aceCounter)
     gameLogic() // decides whether player has lost or still in game
     newCard = randomCard() // pulling new card from deck
-    bet10.style.display="none"
+    betAllIn.style.display="none"
     bet50.style.display="none"
     bet100.style.display="none"
     bet200.style.display="none"
@@ -222,7 +222,7 @@ function gameLogic() {
 
 // ---- Restart game button ----
 function restartDisplay(){
-        bet10.style.display="block"
+        betAllIn.style.display="block"
         bet50.style.display="block"
         bet100.style.display="block"
         bet200.style.display="block"
@@ -232,7 +232,7 @@ function restartDisplay(){
         refillBalanceBtn.style.display="none"
 }
 function restartDisplayReverse(){
-    bet10.style.display="none"
+    betAllIn.style.display="none"
     bet50.style.display="none"
     bet100.style.display="none"
     bet200.style.display="none"
@@ -394,9 +394,9 @@ restartGameBtn.style.display="block"
 // ---- Bet increase buttons ----
 
 let totalBet = 0
-bet10.addEventListener("click", function() {
-    if (totalBet + 10 <= totalBalance) {
-        totalBet += 10
+betAllIn.addEventListener("click", function() {
+    if (totalBalance!=0) {
+        totalBet = totalBalance
         bet.textContent = "Bet: " + totalBet
     }
     else {
