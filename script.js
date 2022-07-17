@@ -296,37 +296,37 @@ function dealer() {
       dealerSum += value;
       dealerSumWithAce = dealerSum - dealerAceCounter * 10;
 
-    //Sum display logic if player or dealer has ace or not
+      //Sum display logic if player or dealer has ace or not
 
       if (!hasAce && !dealerAce) {
         sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSum}`; //displaying current sum
       } else if (dealerAce && dealerSum <= 21) {
-        sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSum}   /   ${dealerSumWithAce}`; 
+        sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSum}   /   ${dealerSumWithAce}`;
       } else if (dealerAce && dealerSum > 21) {
-        sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSumWithAce}`; 
+        sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSumWithAce}`;
       } else if (!dealerAce && hasAce && sumVal <= 21) {
-        sumDP.textContent = `Sum: ${sumVal}   /   ${sumValWithAce}      |      ${dealerSum}`; 
+        sumDP.textContent = `Sum: ${sumVal}   /   ${sumValWithAce}      |      ${dealerSum}`;
       } else if (!dealerAce && hasAce && sumVal > 21) {
-        sumDP.textContent = `Sum: ${sumValWithAce}      |      ${dealerSum}`; 
+        sumDP.textContent = `Sum: ${sumValWithAce}      |      ${dealerSum}`;
       } else if (dealerAce && sumVal < 21 && dealerSum < 21) {
-        sumDP.textContent = `Sum: ${sumVal}   /   ${sumValWithAce}      |      ${dealerSum}   /   ${dealerSumWithAce}`; 
+        sumDP.textContent = `Sum: ${sumVal}   /   ${sumValWithAce}      |      ${dealerSum}   /   ${dealerSumWithAce}`;
       } else if (dealerAce && sumVal > 21 && dealerSum < 21) {
-        sumDP.textContent = `Sum: ${sumValWithAce}      |      ${dealerSum}   /   ${dealerSumWithAce}`; 
+        sumDP.textContent = `Sum: ${sumValWithAce}      |      ${dealerSum}   /   ${dealerSumWithAce}`;
       } else if (dealerAce && sumVal < 21 && dealerSum > 21) {
-        sumDP.textContent = `Sum: ${sumValWithAce}      |      ${dealerSumWithAce}`; 
+        sumDP.textContent = `Sum: ${sumValWithAce}      |      ${dealerSumWithAce}`;
       } else if (dealerAce && sumVal > 21 && dealerSum > 21) {
-        sumDP.textContent = `Sum: ${sumValWithAce}      |      ${dealerSumWithAce}`; 
+        sumDP.textContent = `Sum: ${sumValWithAce}      |      ${dealerSumWithAce}`;
       } else if (dealerAce && hasAce && sumVal > 21 && dealerSum > 21) {
-        sumDP.textContent = `Sum: ${sumValWithAce}      |      ${dealerSumWithAce}`; 
+        sumDP.textContent = `Sum: ${sumValWithAce}      |      ${dealerSumWithAce}`;
       } else if (dealerAce && hasAce && sumVal > 21 && dealerSum < 21) {
-        sumDP.textContent = `Sum: ${sumValWithAce}      |      ${dealerSum}`; 
+        sumDP.textContent = `Sum: ${sumValWithAce}      |      ${dealerSum}`;
       } else if (dealerAce && hasAce && sumVal < 21 && dealerSum > 21) {
-        sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSumWithAce}`; 
+        sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSumWithAce}`;
       } else if (dealerAce && hasAce && sumVal < 21 && dealerSum < 21) {
-        sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSum}`; 
+        sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSum}`;
       }
-        gameLogic(); // decides whether player has lost or still in game
-        newCard = randomCard(); // pulling new card from deck
+      gameLogic(); // decides whether player has lost or still in game
+      newCard = randomCard(); // pulling new card from deck
     } while (
       ((dealerSum < sumVal || sumValWithAce > dealerSum) && dealerSum < 21) ||
       (dealerAce && dealerSumWithAce < sumVal) ||
