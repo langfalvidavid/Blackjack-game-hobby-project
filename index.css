@@ -49,7 +49,7 @@ h1{
     
 }
 #new-card-btn, #restart-game-btn, #stop-btn,
-#bet-10, #bet-50, #bet-100, #bet-200{
+#refill-balance-btn,#bet-10, #bet-50, #bet-100, #bet-200{
     margin:0 .5em;
     background-color:aqua;
     border:none;
@@ -66,17 +66,17 @@ h1{
 }
 
 #new-card-btn:hover, #restart-game-btn:hover, #stop-btn:hover,
-#bet-10:hover, #bet-50:hover, #bet-100:hover, #bet-200:hover{
+#refill-balance-btn:hover, #bet-10:hover, #bet-50:hover, #bet-100:hover, #bet-200:hover{
     background-color:black;
     color:aqua;
     box-shadow:0px 0px 50px rgb(5, 81, 167);
 }
 #new-card-btn:active, #restart-game-btn:active, #stop-btn:active,
-#bet-10:active, #bet-50:active, #bet-100:active, #bet-200:active{
+#refill-balance-btn:active, #bet-10:active, #bet-50:active, #bet-100:active, #bet-200:active{
     transform:scale(0.5);
 }
-span{
-    color:red;
+#refill-balance-btn {
+    display:none;
 }
 #restart-game-btn{
     display:none;

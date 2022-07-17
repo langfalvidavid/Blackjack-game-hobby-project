@@ -10,6 +10,7 @@ const dealerSumDP = document.getElementById("dealerSum") // dealer's sum display
 const newCardBtn = document.getElementById("new-card-btn") //Button that randomly generates a new card
 const restartGameBtn = document.getElementById("restart-game-btn") //Button that restarts game
 const stopBtn = document.getElementById("stop-btn") //Button that stops player action / starts dealer action
+const refillBalanceBtn = document.getElementById("refill-balance-btn") //Button to refill balance if its 0
 
 const bet10 = document.getElementById("bet-10")
 const bet50 = document.getElementById("bet-50")
@@ -228,6 +229,7 @@ function restartDisplay(){
         newCardBtn.style.display="block"
         stopBtn.style.display="block"
         restartGameBtn.style.display="none"
+        refillBalanceBtn.style.display="none"
 }
 function restartDisplayReverse(){
     bet10.style.display="none"
@@ -238,7 +240,9 @@ function restartDisplayReverse(){
     stopBtn.style.display="none"
     restartGameBtn.style.display="block"
 }
-//resetting the game to its default stage
+
+// ---- Restart game button ----
+
 restartGameBtn.addEventListener("click", function() {
         messageDP.textContent = "Draw a card to start the game! 😀"
         sumDP.textContent = "Sum: 0"
@@ -260,6 +264,19 @@ restartGameBtn.addEventListener("click", function() {
         dealerAce = false
         aceCounter = 0
         dealerAceCounter = 0
+        if (totalBalance === 0) {
+            restartDisplayReverse()
+            restartGameBtn.style.display="none"
+            refillBalanceBtn.style.display="block"
+        }
+})
+
+// ---- Refill balance button ----
+refillBalanceBtn.addEventListener("click", function() {
+totalBalance+=1000
+balance.textContent = "Balance: " + totalBalance
+restartDisplay()
+
 })
 
 // ---- Stop button ----
