@@ -5,6 +5,7 @@ const messageDP = document.getElementById("message") //Message that is visible
 const balance = document.getElementById("balance") //Player's balance
 const bet = document.getElementById("bet") //Bet amount
 const errorMsg = document.getElementById("error-msg") //Error message
+const dealerSumDP = document.getElementById("dealerSum") // dealer's sum display
 
 const newCardBtn = document.getElementById("new-card-btn") //Button that randomly generates a new card
 const restartGameBtn = document.getElementById("restart-game-btn") //Button that restarts game
@@ -127,6 +128,7 @@ let newCard = randomCard() //variable for the generated card (i.e. "2_of_clubs-m
 
 let sumVal = 0 //sum of cards
 let sumValWithAce = 0
+let aceCounter = 0
 let hasAce = false //if player pulls ace, we have to display 2 sums
  newCardBtn.addEventListener("click", function() {
     
@@ -136,19 +138,21 @@ let hasAce = false //if player pulls ace, we have to display 2 sums
     //generating new elements for each card
     if(value===11){
         hasAce=true
+        aceCounter++
     }
         
     cardsDP.insertAdjacentHTML("beforeend", `<img src="cards/${newCard.image}" id="img" alt="Player's card with value ${value}">`)
     if (hasAce) {
         sumVal += value
-        sumValWithAce = sumVal-10
+        sumValWithAce = sumVal - (aceCounter * 10)
         sumDP.textContent = `Sum: ${sumVal}  /  ${sumValWithAce}`//displaying current sum
     }
     else{
         sumVal += value
         sumDP.textContent = `Sum: ${sumVal}`//displaying current sum
     }
-    console.log(sumVal)
+    console.log(value)
+    console.log("aces: " + aceCounter)
     gameLogic() // decides whether player has lost or still in game
     newCard = randomCard() // pulling new card from deck
     bet10.style.display="none"
@@ -182,8 +186,6 @@ let message =
 ]
 
 // ---- Game logic ----
-
-let win = false
 function gameLogic() {
         if (sumVal <= 21) {messageDP.textContent=message[0]}
         else if (sumVal === 21) {messageDP.textContent=message[1]}
@@ -196,6 +198,20 @@ function gameLogic() {
     }
     else if (hasAce && sumValWithAce > 21){
         messageDP.textContent = message[2]
+        inGame = false
+        playerWon = false
+        balanceSystem()
+        restartDisplayReverse()
+    }
+    else if (!dealerAce && dealerSum > 21) {
+        messageDP.textContent = message[5]
+        inGame = false
+        playerWon = false
+        balanceSystem()
+        restartDisplayReverse()
+    }
+    else if (dealerAce && dealerSumWithAce > 21) {
+        messageDP.textContent = message[5]
         inGame = false
         playerWon = false
         balanceSystem()
@@ -241,6 +257,9 @@ restartGameBtn.addEventListener("click", function() {
         playerWon = false
         restartDisplay()
         hasAce = false
+        dealerAce = false
+        aceCounter = 0
+        dealerAceCounter = 0
 })
 
 // ---- Stop button ----
@@ -267,40 +286,81 @@ stopBtn.addEventListener("click", function() {
 
 // ---- Dealer system ----
 
-
+let dealerAceCounter = 0
 let dealerSum = 0
+let dealerAce = false
+let dealerSumWithAce = 0
 let playerWon
 function dealer() {
 if(stopPressed) {
     do { 
         let value = newCard.value //value of generated card
+        if (value===11) {
+            dealerAce = true
+            dealerAceCounter++
+        }
         //generating new elements for each card
        cardsDP.insertAdjacentHTML("beforeend",
              `<img src="cards/${newCard.image}" id="img" alt="Player's card with value ${value}">`)
         dealerSum += value
-        if(!hasAce){
-            sumDP.textContent = `Sum: ${sumVal}   |   ${dealerSum}`//displaying current sum
-            gameLogic() // decides whether player has lost or still in game
-            newCard = randomCard() // pulling new card from deck
+        dealerSumWithAce = dealerSum - (dealerAceCounter * 10)
+            if(!hasAce && !dealerAce) {
+                sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSum}`//displaying current sum
+                gameLogic() // decides whether player has lost or still in game
+                newCard = randomCard() // pulling new card from deck
+            }
+            else if (dealerAce && dealerSum <= 21){
+                sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSum}   /   ${dealerSumWithAce}`//displaying current sum
+                gameLogic() // decides whether player has lost or still in game
+                newCard = randomCard() // pulling new card from deck
+            }
+            else if (dealerAce && dealerSum > 21){
+                sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSumWithAce}`//displaying current sum
+                gameLogic() // decides whether player has lost or still in game
+                newCard = randomCard() // pulling new card from deck
+            }
+            else if((!dealerAce && hasAce) && (sumVal <= 21)) {
+                sumDP.textContent = `Sum: ${sumVal}   /   ${sumValWithAce}      |      ${dealerSum}`//displaying current sum
+                gameLogic() // decides whether player has lost or still in game
+                newCard = randomCard() // pulling new card from deck
+            }
+            else if ((!dealerAce && hasAce) && (sumVal > 21)){
+                sumDP.textContent = `Sum: ${sumValWithAce}      |      ${dealerSum}`//displaying current sum
+                gameLogic() // decides whether player has lost or still in game
+                newCard = randomCard() // pulling new card from deck
+            }
+            else if (dealerAce && ((sumVal < 21) && (dealerSum < 21))) {
+                sumDP.textContent = `Sum: ${sumVal}   /   ${sumValWithAce}      |      ${dealerSum}   /   ${dealerSumWithAce}`//displaying current sum
+                gameLogic() // decides whether player has lost or still in game
+                newCard = randomCard() // pulling new card from deck
+            }
+            else if (dealerAce && ((sumVal > 21) && (dealerSum < 21))){
+                sumDP.textContent = `Sum: ${sumValWithAce}      |      ${dealerSum}   /   ${dealerSumWithAce}`//displaying current sum
+                gameLogic() // decides whether player has lost or still in game
+                newCard = randomCard() // pulling new card from deck
+            }
+            else if (dealerAce && ((sumVal < 21) && (dealerSum > 21))){
+                sumDP.textContent = `Sum: ${sumValWithAce}      |      ${dealerSumWithAce}`//displaying current sum
+                gameLogic() // decides whether player has lost or still in game
+                newCard = randomCard() // pulling new card from deck
+            }
+            else if (dealerAce && ((sumVal > 21) && (dealerSum > 21))){
+                sumDP.textContent = `Sum: ${sumValWithAce}      |      ${dealerSumWithAce}`//displaying current sum
+                gameLogic() // decides whether player has lost or still in game
+                newCard = randomCard() // pulling new card from deck
+            }
         }
-        else{
-            sumDP.textContent = `Sum: ${sumVal}   /   ${sumValWithAce}   |   ${dealerSum}`//displaying current sum
-        gameLogic() // decides whether player has lost or still in game
-        newCard = randomCard() // pulling new card from deck
-        }
-        
-    }
-    while (dealerSum < sumVal && dealerSum<20)
-}
-if (dealerSum > 21) {
+    while ((((dealerSum < sumVal) || (sumValWithAce > dealerSum)) && dealerSum<21) || (dealerAce && (dealerSumWithAce < sumVal) || (dealerSumWithAce < sumValWithAce)) )
+
+if ((dealerSum > 21 && !dealerAce) || (dealerAce && dealerSumWithAce > 21)) {
     messageDP.textContent = message[5]
     playerWon = true
 }
-else if (dealerSum > sumVal || dealerSum > sumValWithAce) {
+else if ((dealerSum > sumVal) || (hasAce && (dealerSum > sumValWithAce)) || dealerAce && ((dealerSumWithAce > sumVal) || (dealerSum > sumVal)) ) {
     messageDP.textContent = message[6]
     playerwon = false
 }
-else if (sumVal > dealerSum || (hasAce && sumValWithAce > dealerSum)) {
+else if ((sumVal > dealerSum) || (hasAce && (sumValWithAce > dealerSum)) || dealerAce && ((sumVal > dealerSumWithAce) || (sumVal > dealerSum) )) {
     messageDP.textContent = message[7]
     playerWon = true
 }
@@ -312,7 +372,7 @@ balanceSystem()
 newCardBtn.style.display="none"
 stopBtn.style.display="none"
 restartGameBtn.style.display="block"
-}
+}}
 
 // ---- Bet increase buttons ----
 
