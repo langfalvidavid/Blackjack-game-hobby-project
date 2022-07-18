@@ -336,8 +336,8 @@ async function dealer() {
       } while (  ((!hasAce && !dealerAce) && (sumVal>dealerSum)) ||
                  ((hasAce && !dealerAce) && ((sumVal<22 && sumVal>dealerSum) || (sumVal>21 && sumValWithAce<22 && dealerSum<sumValWithAce))) ||
                  ((!hasAce && dealerAce) && ((sumVal<22 && dealerSum<22 && sumVal>dealerSum) || (sumVal<22 && dealerSum>21 && sumVal>dealerSumWithAce))) ||
-                 ((hasAce && dealerAce) && (sumVal < 22 && dealerSum < 22 && sumVal > dealerSum) || (sumVal<22 && dealerSum>21 && sumVal<dealerSumWithAce) || 
-                 (sumVal>21 && dealerSum<22 && sumValWithAce < 22 && sumValWithAce > dealerSum) || (sumVal>21 && dealerSum>21 && sumValWithAce < 22 && sumValWithAce > dealerSumWithAce))    
+                 ((hasAce && dealerAce) && ((sumVal < 22 && dealerSum < 22 && sumVal > dealerSum) || (sumVal<22 && dealerSum>21 && sumVal<dealerSumWithAce) || 
+                 (sumVal>21 && dealerSum<22 && sumValWithAce < 22 && sumValWithAce > dealerSum) || (sumVal>21 && dealerSum>21 && sumValWithAce < 22 && sumValWithAce > dealerSumWithAce)))    
       );
 
       if (
