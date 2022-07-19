@@ -122,13 +122,43 @@ newCardBtn.addEventListener("click", function () {
         "beforeend",
         `<img src="cards/${newCard.image}" id="img" alt="Player's card with value ${value}">`
       );
-      if (hasAce) {
+      if (aceCounter===0) {
         sumVal += value;
-        sumValWithAce = sumVal - aceCounter * 10;
-        sumDP.textContent = `Sum: ${sumVal}  /  ${sumValWithAce}`; //displaying current sum
-      } else {
-        sumVal += value;
+        sumValWithAce += value
         sumDP.textContent = `Sum: ${sumVal}`; //displaying current sum
+      } else if (aceCounter > 0) {
+         if((value === 11) && ((sumVal + 11) < 22)) {
+            sumVal += value;
+            sumValWithAce ++
+            if (sumVal === sumValWithAce) {
+               sumDP.textContent = `Sum: ${sumVal}`;
+            }
+            else {
+               sumDP.textContent = `Sum: ${sumVal}  /  ${sumValWithAce}`; //displaying current sum
+            }
+         }
+         else if ((value===11) && ((sumVal + 11) > 21)) {
+            sumVal += 1
+            sumValWithAce ++
+            if (sumVal === sumValWithAce) {
+               sumDP.textContent = `Sum: ${sumVal}`;
+            }
+            else {
+               sumDP.textContent = `Sum: ${sumVal}  /  ${sumValWithAce}`; //displaying current sum
+            }
+            
+         }
+        else if (value != 11) {
+         sumVal += value
+         sumValWithAce += value
+         if (sumVal === sumValWithAce) {
+            sumDP.textContent = `Sum: ${sumVal}`;
+         }
+         else {
+            sumDP.textContent = `Sum: ${sumVal}  /  ${sumValWithAce}`; //displaying current sum
+         }
+
+        }
       }
       console.log(value);
       console.log("aces: " + aceCounter);
@@ -239,6 +269,8 @@ restartGameBtn.addEventListener("click", function () {
   dealerAce = false;
   aceCounter = 0;
   dealerAceCounter = 0;
+  sumValWithAce = 0
+  dealerSumWithAce = 0
   if (totalBalance === 0) {
     restartDisplayReverse();
     restartGameBtn.style.display = "none";
@@ -284,7 +316,7 @@ let dealerAceCounter = 0;
 let dealerSum = 0;
 let dealerAce = false;
 let dealerSumWithAce = 0;
-let playerWon;
+let playerWon = false;
 async function dealer() {
   if (stopPressed) {
     do {
@@ -298,15 +330,39 @@ async function dealer() {
         "beforeend",
         `<img src="cards/${newCard.image}" id="img" alt="Player's card with value ${value}">`
       );
-      dealerSum += value;
-      dealerSumWithAce = dealerSum - dealerAceCounter * 10;
-
+      if(dealerAceCounter===0){
+         dealerSum += value;
+         dealerSumWithAce += value
+      }
+      else if (dealerAceCounter > 0 ){
+         if ((value === 11) && ((dealerSum + 11) < 22)) {
+            dealerSum += value
+            dealerSumWithAce ++
+         }
+         else if ((value === 11) && ((dealerSum + 11) > 21)) {
+            dealerSum ++
+            dealerSumWithAce ++
+         }
+         else {
+            dealerSum += value;
+            dealerSumWithAce += value
+         }
+        
+      }
+      
+      
       //Sum display logic if player or dealer has ace or not
 
       if (!hasAce && !dealerAce) {
         sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSum}`; //displaying current sum
       } else if (dealerAce && dealerSum <= 21) {
-        sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSum}   /   ${dealerSumWithAce}`;
+         if(dealerSum===dealerSumWithAce){
+            sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSum}`;
+         }
+         else {
+            sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSum}   /   ${dealerSumWithAce}`;
+         }
+        
       } else if (dealerAce && dealerSum > 21) {
         sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSumWithAce}`;
       } else if (!dealerAce && hasAce && sumVal <= 21) {
@@ -314,7 +370,12 @@ async function dealer() {
       } else if (!dealerAce && hasAce && sumVal > 21) {
         sumDP.textContent = `Sum: ${sumValWithAce}      |      ${dealerSum}`;
       } else if (dealerAce && sumVal < 21 && dealerSum < 21) {
-        sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSum}   /   ${dealerSumWithAce}`;
+         if(dealerSum===dealerSumWithAce){
+            sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSum}`;
+         }
+         else {
+            sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSum}   /   ${dealerSumWithAce}`;
+         }
       } else if (dealerAce && sumVal > 21 && dealerSum < 21) {
         sumDP.textContent = `Sum: ${sumValWithAce}      |      ${dealerSum}`;
       } else if (dealerAce && sumVal < 21 && dealerSum > 21) {
@@ -332,20 +393,17 @@ async function dealer() {
       }
       gameLogic(); // decides whether player has lost or still in game
       newCard = randomCard(); // pulling new card from deck
-      await delay(500);
+      await delay(750);
       // logic when to pull a card
     } while (
-      (!hasAce && !dealerAce && sumVal > dealerSum) ||
-      (hasAce &&
-        !dealerAce &&
+      ((!hasAce && !dealerAce) && (sumVal > dealerSum)) ||
+      ((hasAce && !dealerAce) &&
         ((sumVal < 22 && sumVal > dealerSum) ||
           (sumVal > 21 && sumValWithAce < 22 && dealerSum < sumValWithAce))) ||
-      (!hasAce &&
-        dealerAce &&
+      ((!hasAce && dealerAce) &&
         ((sumVal < 22 && dealerSum < 22 && sumVal > dealerSum) ||
           (sumVal < 22 && dealerSum > 21 && sumVal > dealerSumWithAce))) ||
-      (hasAce &&
-        dealerAce &&
+      ((hasAce && dealerAce) &&
         ((sumVal < 22 && dealerSum < 22 && sumVal > dealerSum) ||
           (sumVal < 22 && dealerSum > 21 && sumVal > dealerSumWithAce) ||
           (sumVal > 21 &&
