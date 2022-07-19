@@ -393,7 +393,7 @@ async function dealer() {
       }
       gameLogic(); // decides whether player has lost or still in game
       newCard = randomCard(); // pulling new card from deck
-      await delay(750);
+      await delay(500);
       // logic when to pull a card
     } while (
       ((!hasAce && !dealerAce) && (sumVal > dealerSum)) ||
