@@ -16,6 +16,10 @@ const bet50 = document.getElementById("bet-50");
 const bet100 = document.getElementById("bet-100");
 const bet200 = document.getElementById("bet-200");
 
+window.addEventListener("load", function(){
+   this.alert("loaded")
+})
+
 const cards = [
    { image: "2_of_clubs.png", value: 2 },
    { image: "3_of_clubs.png", value: 3 },
