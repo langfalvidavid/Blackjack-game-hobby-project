@@ -20,10 +20,6 @@ const bet50 = document.getElementById("bet-50");
 const bet100 = document.getElementById("bet-100");
 const bet200 = document.getElementById("bet-200");
 
-window.addEventListener("load", function(){
-   this.alert("loaded")
-})
-
 const cards = [
   { image: "2_of_clubs.png", value: 2 },
   { image: "3_of_clubs.png", value: 3 },
@@ -90,7 +86,23 @@ function preLoader(e) {
     tempImage.addEventListener("load", progress, true);
     tempImage.src = cards[i].image;
   }
+    for (let i = 0; i < cards.length; i++) {
+        let tempImage = new Image();
+
+        tempImage.addEventListener("load", progress, true);
+        tempImage.src = "cards/" + cards[i].image;
+    }
 }
+
+function progress() {
+    preloaded++;
+
+    if (preloaded === cards.length) {
+        this.alert("ALL Images have been loaded, perform the desired action")
+    }
+}
+this.addEventListener("DOMContentLoaded", preLoader, true);
+progress()
 
 //delay
 
