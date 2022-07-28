@@ -73,7 +73,7 @@ const cards = [
 ];
 
 // ---- Preloading images ----
-/*
+
 let preloaded = 0;
 
 function preLoader(e) {
@@ -81,7 +81,7 @@ function preLoader(e) {
     let tempImage = new Image();
 
     tempImage.addEventListener("load", progress, true);
-    tempImage.src = cards[i].image;
+    tempImage.src = "cards/" + cards[i].image;
   }
     for (let i = 0; i < cards.length; i++) {
         let tempImage = new Image();
@@ -95,12 +95,12 @@ function progress() {
     preloaded++;
 
     if (preloaded === cards.length) {
-        this.alert("ALL Images have been loaded, perform the desired action")
+        alert("ALL Images have been loaded, perform the desired action")
     }
 }
 this.addEventListener("DOMContentLoaded", preLoader, true);
 progress()
-*/
+
 //delay
 
 function delay(time) {
