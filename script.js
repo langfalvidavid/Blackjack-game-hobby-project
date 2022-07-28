@@ -95,7 +95,7 @@ function progress() {
     preloaded++;
 
     if (preloaded === cards.length) {
-        alert("ALL Images have been loaded, perform the desired action")
+        console.log("ALL Images have been loaded, perform the desired action")
     }
 }
 this.addEventListener("DOMContentLoaded", preLoader, true);
