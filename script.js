@@ -73,7 +73,7 @@ const cards = [
 ];
 
 // ---- Preloading images ----
-
+/*
 let preloaded = 0;
 
 function preLoader(e) {
@@ -100,7 +100,7 @@ function progress() {
 }
 this.addEventListener("DOMContentLoaded", preLoader, true);
 progress()
-
+*/
 //delay
 
 function delay(time) {
