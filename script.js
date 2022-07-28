@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 const cardsDP = document.getElementById("cards"); //div that cards are generated into
 const sumDP = document.getElementById("sum"); //Sum of cards
 const messageDP = document.getElementById("message"); //Message that is visible
