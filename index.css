@@ -163,6 +163,11 @@ img{
     text-shadow: none;
     
     }
+    #cards{
+        display: inline-block;
+        height:10vh;
+        
+    }
 
 }
     
