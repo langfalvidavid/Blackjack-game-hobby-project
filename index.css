@@ -147,10 +147,9 @@ img{
 }
 }
 
-@media (max-width:600px) {
+@media (max-width:300px) {
     html{
-        font-size: 15px;
-    }
+        font-size: 16px;
     }
     .container{
         justify-content: space-evenly;
@@ -162,5 +161,8 @@ img{
     #new-card-btn, #restart-game-btn, #stop-btn,
     #refill-balance-btn,#bet-all-in, #bet-50, #bet-100, #bet-200{
     text-shadow: none;
+    
+    }
 
 }
+    
