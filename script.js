@@ -242,7 +242,7 @@ function gameLogic() {
   }
 }
 
-// ---- Restart game button ----
+// ---- Restart game button (functions) ----
 function restartDisplay() {
   betAllIn.style.display = "block";
   bet50.style.display = "block";
@@ -296,6 +296,7 @@ restartGameBtn.addEventListener("click", function () {
 });
 
 // ---- Refill balance button ----
+
 refillBalanceBtn.addEventListener("click", function () {
   totalBalance += 1000;
   balance.textContent = "Balance: " + totalBalance;
@@ -314,14 +315,9 @@ stopBtn.addEventListener("click", function () {
     messageDP.textContent = message[3];
     stopPressed = true;
     const separate = document.createElement("div");
-    separate.id = "img";
-    separate.style.margin = "0 1em";
-    separate.style.display = "inline-block";
-    separate.style.height = "80%";
-    separate.style.width = "5px";
-    separate.style.color = "#fff";
-    separate.style.backgroundColor = "#fff";
-    separate.style.animation = "cardAnimation 1s";
+    separate.id = "img"
+    separate.style.display="inline-block"
+    separate.style.margin="0 1.5em"
     document.getElementById("cards").appendChild(separate);
     delay(1000).then(() => dealer());
   }

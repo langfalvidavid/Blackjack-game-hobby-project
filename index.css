@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 html{
     text-align:center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -82,14 +86,13 @@ h1{
 
 #cards{
     display: inline-block;
-    height: 4em;
-}
-/* #img {
-    height: 80%;
+    height:10vw;
     
-} */
+}
+
 img{
-    height: 80%;
+    height: 90%;
+    /* max-width: 20vw; */
     margin: 0 .1em;
     border-radius: 6px;
     animation: cardAnimation 0.25s;
@@ -98,6 +101,8 @@ img{
 #message{
     animation: messageAnimation 1s;
 }
+
+
 
 @keyframes cardAnimation{
     from {
