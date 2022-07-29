@@ -147,7 +147,7 @@ img{
 }
 }
 
-@media (max-width:300px) {
+@media (max-width:425px) {
     html{
         font-size: 16px;
     }
