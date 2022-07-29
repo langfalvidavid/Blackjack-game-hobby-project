@@ -14,6 +14,9 @@ body{
     
 }
 .container{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     height:100vh;
     width:100vw;
 }
@@ -90,10 +93,13 @@ h1{
     height:10vw;
     
 }
+#balance{
+    margin-left: 1em;
+    margin-right: 1em;
+}
 
 img{
     height: 90%;
-    /* max-width: 20vw; */
     margin: 0 .1em;
     border-radius: 6px;
     animation: cardAnimation 0.25s;
@@ -126,7 +132,7 @@ img{
     }
 }
 
-@media (max-height:300px) {
+@media (max-height:400px) {
     html{
         font-size:12px;
     }
@@ -138,8 +144,9 @@ img{
     .sumBal{
         justify-content: space-between;
     }
-    #balance{
-        margin-left: 1em;
-        margin-right: 1em;
-    }
+    
+    #new-card-btn, #restart-game-btn, #stop-btn,
+    #refill-balance-btn,#bet-all-in, #bet-50, #bet-100, #bet-200{
+    text-shadow: none;
+}
 }
