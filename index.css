@@ -132,7 +132,7 @@ img{
 }
 /* ---- Media queries ---- */
 
-@media (max-height:300px) {
+@media (max-height:600px) {
     html{
         font-size:12px;
     }
@@ -146,7 +146,7 @@ img{
 }
 }
 
-@media (max-width:425px) {
+@media (max-width:600px) {
     html{
         font-size: 16px;
     }
