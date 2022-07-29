@@ -16,8 +16,8 @@ body{
     display:flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height:100vh;
-    width:100vw;
+    min-height:100vh;
+    min-width:100vw;
 }
 
 h1{
@@ -34,7 +34,7 @@ h1{
     text-align: center;
 }
 .buttons-bet{
-    margin-top:5%;
+    margin-top:.5em;
 }
 .buttons, .bet{
     display:flex;
@@ -89,7 +89,7 @@ h1{
 
 #cards{
     display: inline-block;
-    height:10vw;
+    height:15vh;
     
 }
 #balance{
@@ -98,9 +98,9 @@ h1{
 }
 
 img{
-    height: 90%;
+    height: 100%;
     margin: 0 .1em;
-    border-radius: 6px;
+    border-radius: 3.5px;
     animation: cardAnimation 0.25s;
 }
 
