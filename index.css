@@ -131,10 +131,30 @@ img{
         opacity: 1;
     }
 }
+/* ---- Media queries ---- */
 
-@media (max-height:400px) {
+@media (orientation: landscape) and (max-height:300px) {
     html{
         font-size:12px;
+    }
+    .container{
+        display:flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    .sumBal{
+        justify-content: space-between;
+    }
+    
+    #new-card-btn, #restart-game-btn, #stop-btn,
+    #refill-balance-btn,#bet-all-in, #bet-50, #bet-100, #bet-200{
+    text-shadow: none;
+}
+}
+
+@media  (orientation: portrait) and (max-width:300px) {
+    html{
+        font-size: 7px;
     }
     .container{
         display:flex;
