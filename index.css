@@ -14,7 +14,8 @@ body{
     
 }
 .container{
-    margin-top:.33em;
+    height:100vh;
+    width:100vw;
 }
 
 h1{
