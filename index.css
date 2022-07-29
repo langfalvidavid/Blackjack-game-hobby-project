@@ -126,7 +126,7 @@ img{
     }
 }
 
-@media (max-width:600px) {
+@media (max-height:300px) {
     html{
         font-size:16px;
     }
