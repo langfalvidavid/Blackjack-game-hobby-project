@@ -8,8 +8,7 @@ html{
     font-size: 30px;
 }
 body{
-    background-image: url(images/istockphoto-1299608766-612x612.jpg);
-    background-size: cover;
+    background: radial-gradient(#32cd32  ,green 75%);
     margin:0;
     
 }
