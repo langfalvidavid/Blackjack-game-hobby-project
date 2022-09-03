@@ -1,5 +1,6 @@
 
-const cardsDP = document.getElementById("cards"); //div that cards are generated into
+const playerCards = document.getElementById("playerCards"); //div that cards are generated into (player)
+const dealerCards = document.getElementById("dealerCards"); //div that cards are generated into (dealer)
 const sumDP = document.getElementById("sum"); //Sum of cards
 const messageDP = document.getElementById("message"); //Message that is visible
 const balance = document.getElementById("balance"); //Player's balance
@@ -125,6 +126,7 @@ let sumVal = 0; //sum of cards
 let sumValWithAce = 0;
 let aceCounter = 0;
 let hasAce = false; //if player pulls ace, we have to display 2 sums
+
 newCardBtn.addEventListener("click", function () {
   if (totalBet != 0) {
     if (inGame && !stopPressed) {
@@ -135,7 +137,7 @@ newCardBtn.addEventListener("click", function () {
         aceCounter++;
       }
 
-      cardsDP.insertAdjacentHTML(
+      playerCards.insertAdjacentHTML(
         "beforeend",
         `<img src="cards/${newCard.image}" id="img" alt="Player's card with value ${value}">`
       );
@@ -271,8 +273,10 @@ restartGameBtn.addEventListener("click", function () {
   sumVal = 0;
   dealerSum = 0;
   //counting how many elements does the cards div have, then deleting them
-  let playerChildren = cardsDP.childElementCount;
-  for (let i = 0; i < playerChildren; i++) {
+  const playerChildren = playerCards.childElementCount;
+  const dealerChildren = dealerCards.childElementCount;
+  const children = playerChildren + dealerChildren
+  for (let i = 0; i < children; i++) {
     let del = document.getElementById("img");
     del.remove();
   }
@@ -318,7 +322,7 @@ stopBtn.addEventListener("click", function () {
     separate.id = "img"
     separate.style.display="inline-block"
     separate.style.margin="0 1.5em"
-    document.getElementById("cards").appendChild(separate);
+    // document.getElementById("cards").appendChild(separate);
     delay(1000).then(() => dealer());
   }
 });
@@ -339,7 +343,7 @@ async function dealer() {
         dealerAceCounter++;
       }
       //generating new elements for each card
-      cardsDP.insertAdjacentHTML(
+      dealerCards.insertAdjacentHTML(
         "beforeend",
         `<img src="cards/${newCard.image}" id="img" alt="Player's card with value ${value}">`
       );
@@ -364,7 +368,7 @@ async function dealer() {
       }
       
       
-      //Sum display logic if player or dealer has ace or not
+      //Sum display logic whether player or dealer has ace 
 
       if (!hasAce && !dealerAce) {
         sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSum}`; //displaying current sum

@@ -15,13 +15,15 @@ body{
 .container{
     display:flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    min-height:100vh;
-    min-width:100vw;
+    justify-content:space-evenly;
+    /* align-items: center; */
+    height:100vh;
+    width:100vw;
 }
 
 h1{
     margin:0;
+    padding-top: .35em;
     color:gold;
     font-size:2rem;
     text-shadow: 2px 2px 5px black;
@@ -35,6 +37,7 @@ h1{
 }
 .buttons-bet{
     margin-top:.5em;
+    height:15vh;
 }
 .buttons, .bet{
     display:flex;
@@ -47,11 +50,15 @@ h1{
     margin-bottom:.5em;
 }
 .sumBal{
-    
-    margin: 0 auto;
     display: flex;
-    justify-content:space-evenly;
-    
+    justify-content:center;
+}
+.sumBal > p {
+    padding: .5em 1em; 
+}
+#message{
+    margin:0;
+    padding:0;
 }
 #new-card-btn, #restart-game-btn, #stop-btn,
 #refill-balance-btn,#bet-all-in, #bet-50, #bet-100, #bet-200{
@@ -87,7 +94,8 @@ h1{
     display:none;
 }
 
-#cards{
+#playerCards,
+#dealerCards{
     display: inline-block;
     height:15vh;
     
@@ -106,6 +114,15 @@ img{
 
 #message{
     animation: messageAnimation 1s;
+}
+#cards{
+    display:flex;
+    align-items: center;
+    height:80vh;
+}
+#dealerCards,
+#playerCards{
+    display: inline-block;
 }
 
 
@@ -162,11 +179,7 @@ img{
     text-shadow: none;
     
     }
-    #cards{
-        display: inline-block;
-        height:10vh;
-        
-    }
+    
 
 }
     
