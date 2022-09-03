@@ -213,8 +213,11 @@ let message = [
 
 // ---- Game logic ----
 function gameLogic() {
-  if (sumVal <= 21) {
-    messageDP.textContent = message[0];
+  if (sumVal <= 21 && !stopPressed) {
+    messageDP.textContent = message[0]
+  }
+  else if(sumVal<=21 && stopPressed){
+    messageDP.textContent = message[3]
   } else if (sumVal === 21) {
     messageDP.textContent = message[1];
   } else if (!hasAce && sumVal > 21) {
