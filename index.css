@@ -23,7 +23,7 @@ body{
 
 h1{
     margin:0;
-    padding-top: .35em;
+    padding-top: .4em;
     color:gold;
     font-size:2rem;
     text-shadow: 2px 2px 5px black;
@@ -115,17 +115,6 @@ img{
 #message{
     animation: messageAnimation 1s;
 }
-#cards{
-    display:flex;
-    align-items: center;
-    height:80vh;
-}
-#dealerCards,
-#playerCards{
-    display: inline-block;
-}
-
-
 
 @keyframes cardAnimation{
     from {
@@ -151,27 +140,21 @@ img{
 
 @media (max-height:600px) {
     html{
-        font-size:12px;
-    }
-    .sumBal{
-        justify-content: space-between;
+        font-size:16px;
     }
     
     #new-card-btn, #restart-game-btn, #stop-btn,
     #refill-balance-btn,#bet-all-in, #bet-50, #bet-100, #bet-200{
     text-shadow: none;
 }
+    img{
+        height: 75%;
+    }
 }
 
 @media (max-width:600px) {
     html{
-        font-size: 16px;
-    }
-    .container{
-        justify-content: space-evenly;
-    }
-    .sumBal{
-        justify-content: space-between;
+        font-size: 12px;
     }
     
     #new-card-btn, #restart-game-btn, #stop-btn,
@@ -180,6 +163,14 @@ img{
     
     }
     
-
+    img{
+        height:50%;
+    }
+    .buttons-bet{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 }
     

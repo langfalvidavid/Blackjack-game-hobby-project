@@ -322,7 +322,6 @@ stopBtn.addEventListener("click", function () {
     separate.id = "img"
     separate.style.display="inline-block"
     separate.style.margin="0 1.5em"
-    // document.getElementById("cards").appendChild(separate);
     delay(1000).then(() => dealer());
   }
 });
@@ -368,7 +367,7 @@ async function dealer() {
       }
       
       
-      //Sum display logic whether player or dealer has ace 
+      //Sum display logic whether player or dealer has ace
 
       if (!hasAce && !dealerAce) {
         sumDP.textContent = `Sum: ${sumVal}      |      ${dealerSum}`; //displaying current sum
