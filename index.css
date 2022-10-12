@@ -16,14 +16,13 @@ body{
     display:flex;
     flex-direction: column;
     justify-content:space-evenly;
-    /* align-items: center; */
     height:100vh;
     width:100vw;
 }
 
 h1{
     margin:0;
-    padding-top: .4em;
+    padding-top: .2em;
     color:gold;
     font-size:2rem;
     text-shadow: 2px 2px 5px black;
@@ -37,7 +36,7 @@ h1{
 }
 .buttons-bet{
     margin-top:.5em;
-    height:15vh;
+    height:20vh;
 }
 .buttons, .bet{
     display:flex;
@@ -54,7 +53,7 @@ h1{
     justify-content:center;
 }
 .sumBal > p {
-    padding: .5em 1em; 
+    padding: 0 1em; 
 }
 #message{
     margin:0;
@@ -74,7 +73,7 @@ h1{
     text-shadow: 1px 1px 0px rgb(10, 10, 10);
     cursor: pointer;
     outline: 0;
-    transition: 0.3s linear;
+    transition: 0.15s linear;
 }
 
 #new-card-btn:hover, #restart-game-btn:hover, #stop-btn:hover,
@@ -85,7 +84,7 @@ h1{
 }
 #new-card-btn:active, #restart-game-btn:active, #stop-btn:active,
 #refill-balance-btn:active, #bet-all-in:active, #bet-50:active, #bet-100:active, #bet-200:active{
-    transform:scale(0.5);
+    transform:scale(0.2);
 }
 #refill-balance-btn {
     display:none;
@@ -142,35 +141,56 @@ img{
     html{
         font-size:16px;
     }
-    
     #new-card-btn, #restart-game-btn, #stop-btn,
     #refill-balance-btn,#bet-all-in, #bet-50, #bet-100, #bet-200{
     text-shadow: none;
-}
+    }
     img{
         height: 75%;
     }
+    
 }
 
 @media (max-width:600px) {
     html{
-        font-size: 12px;
+        font-size: 16px;
     }
     
     #new-card-btn, #restart-game-btn, #stop-btn,
     #refill-balance-btn,#bet-all-in, #bet-50, #bet-100, #bet-200{
     text-shadow: none;
-    
     }
-    
+    #message{
+        margin-bottom: 1em;
+    }
     img{
-        height:50%;
+        height:45%;
     }
     .buttons-bet{
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+    }
+    .sumBal{
+        flex-direction: column;
+        margin-bottom: 1em;
+    }
+    .sumbal p{
+        padding: 0;
+        align-items:center;
+    }
+    #playerCards,
+    #dealerCards{
+        display: inline-block;
+        height:24vh;
+        margin-top:2em;
+    }
+    .messageCards #message{
+        margin-bottom:1em;
+    }
+    h1{
+        margin-bottom: 1em;
     }
 }
     
